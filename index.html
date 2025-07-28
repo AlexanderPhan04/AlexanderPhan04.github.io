@@ -1,54 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alejandro Vargas</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phan Nhat Quan Portfolio</title>
+    <link rel="stylesheet" href="/Portfolio/style.css" />
+    <link rel="icon" type="image/png" href="/Portfolio/images/icon.jpg" />
+    <meta name="theme-color" content="#00a896" />
+    <!-- Màu xanh lá cây từ CV -->
+    <!-- iOS support -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <!-- Font Awesome CDN for icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <meta
+      name="apple-mobile-web-app-title"
+      content="Phan Nhat Quan Portfolio"
+    />
+  </head>
+  <body>
+    <!-- Include Header -->
+    <div id="header"></div>
 
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-ZsTCZTRKwmdCeGIk8sJZAkcYhrkCI9mwvnKccAoV+xqXCEcImjAXZnqFpbP1aGVV9GURb6O6hh6qbcStVkP9tQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    <!-- Home Section (Hero) -->
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <div class="avatar">
+          <img src="/Portfolio/images/PhanQuan.jpg" alt="Avatar của tôi" />
+        </div>
+      </div>
+      <div class="hero-right">
+        <h1>I'm Phan Nhat Quan</h1>
+        <h2>Full-Stack <span class="highlight">Developer</span></h2>
+        <a href="#contact" class="contact-btn">Contact</a>
+      </div>
+    </section>
 
-  <link rel="stylesheet" href="/Portfolio/style.css" />
-</head>
-<body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">Alejandro Vargas</div>
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Skills</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <h2>About Me</h2>
+      <div class="about-row">
+        <div class="about-col">
+          <div class="about-info">
+            <span class="about-label">Address:</span> Hanoi, Vietnam
+          </div>
+          <div class="about-info">
+            <span class="about-label">Language:</span> English - Intermediate
+            (B1-B2)<br /><em
+              >(Able to communicate effectively in common situations, both
+              spoken and written)</em
+            >
+          </div>
+          <span class="about-label">Skills:</span>
+          <ul class="about-list">
+            <li>Programming language</li>
+            <li>Database</li>
+            <li>Development tools</li>
+          </ul>
+          <span class="about-label">Interests:</span>
+          <ul class="about-list">
+            <li>Technology</li>
+            <li>Music</li>
+            <li>Playing video games</li>
+          </ul>
+        </div>
+        <div class="about-col">
+          <span class="about-label">Education:</span>
+          <div class="about-edu">
+            Fullstack Developer Program, VTC Academy Hanoi, Vietnam (08/2024 -
+            Present)
+          </div>
+          <span class="about-label">Work Experience:</span>
+          <div class="about-exp">
+            <div class="about-exp-title">Web Developer Intern</div>
+            <div class="about-exp-company">
+              Vegan Pass, Hanoi, Vietnam (11/2024 - 02/2025)
+            </div>
+            <ul class="about-exp-list">
+              <li>Built static websites using HTML, CSS and JavaScript</li>
+              <li>
+                Contributed to UI design and improved user interface
+                responsiveness
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section class="hero">
-    <div class="hero-left">
-      <img src="/Portfolio/images/PhanQuan.jpg" alt="Avatar" class="avatar" />
+    <!-- Skills Section
+    <section class="skills-section" id="skills">
+      <h2>Programming Languages</h2>
+      <div class="skills-list">
+        <div class="skill-item"><span>JavaScript</span></div>
+        <div class="skill-item"><span>TypeScript</span></div>
+        <div class="skill-item"><span>Python</span></div>
+        <div class="skill-item"><span>Java</span></div>
+        <div class="skill-item"><span>C#</span></div>
+        <div class="skill-item"><span>SQL</span></div>
+      </div>
+    </section> -->
+
+    <!-- Social Section (Contact) -->
+    <section class="social-section" id="contact">
+      <h3>Connect with Me</h3>
       <div class="social-icons">
-        <a href="https://www.linkedin.com/in/qu%C3%A2n-phan-078458288/" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-linkedin fa-2x"></i>
+        <a href="mailto:quannnd2004@gmail.com" title="Email">
+          <i class="fa-solid fa-envelope" style="font-size: 32px"></i>
         </a>
-        <a href="https://github.com/Darlington0433" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-github fa-2x"></i>
+        <a href="tel:+849360205749" title="Phone">
+          <i class="fa-solid fa-phone" style="font-size: 32px"></i>
         </a>
-        <a href="https://medium.com/@quannnd2004" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-medium fa-2x"></i>
+        <a
+          href="https://www.facebook.com/Dark.Heart03"
+          target="_blank"
+          title="Facebook"
+        >
+          <i class="fa-brands fa-facebook" style="font-size: 32px"></i>
+        </a>
+        <a
+          href="https://github.com/AlexanderPhan04"
+          target="_blank"
+          title="GitHub"
+        >
+          <i class="fa-brands fa-github" style="font-size: 32px"></i>
         </a>
       </div>
-    </div>
-    <div class="hero-right">
-      <h1>I'm <span class="highlight">Alejandro Vargas</span></h1>
-      <h2>Full Stack <br />Software <br />Developer</h2>
-      <a href="#contact" class="contact-btn">Contact</a>
-    </div>
-  </section>
-</body>
+    </section>
+
+    <!-- Include Footer -->
+    <div id="footer"></div>
+
+    <script>
+      fetch("/Portfolio/view/header.html")
+        .then((response) => response.text())
+        .then((data) => (document.getElementById("header").innerHTML = data));
+
+      fetch("/Portfolio/view/footer.html")
+        .then((response) => response.text())
+        .then((data) => (document.getElementById("footer").innerHTML = data));
+    </script>
+  </body>
 </html>
