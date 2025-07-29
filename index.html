@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phan Nhat Quan Portfolio</title>
+    <link rel="stylesheet" href="/Portfolio/css/base.css" />
+    <link rel="stylesheet" href="/Portfolio/css/header.css" />
+    <link rel="stylesheet" href="/Portfolio/css/nav.css" />
+    <link rel="stylesheet" href="/Portfolio/css/hero.css" />
+    <link rel="stylesheet" href="/Portfolio/css/projects.css" />
+    <link rel="stylesheet" href="/Portfolio/css/about.css" />
+    <link rel="stylesheet" href="/Portfolio/css/programming-languages.css" />
+    <link rel="stylesheet" href="/Portfolio/css/social.css" />
+    <link rel="stylesheet" href="/Portfolio/css/responsive.css" />
+    <link rel="icon" type="image/png" href="/Portfolio/images/icon.jpg" />
+    <meta name="theme-color" content="#00a896" />
+    <!-- Màu xanh lá cây từ CV -->
+    <!-- iOS support -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <!-- Font Awesome CDN for icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <meta
+      name="apple-mobile-web-app-title"
+      content="Phan Nhat Quan Portfolio"
+    />
+  </head>
+  <body>
+    <!-- Include Header -->
+    <div id="header"></div>
+
+    <!-- Home Section (Hero) -->
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <div class="avatar">
+          <img src="/Portfolio/images/PhanQuan.jpg" alt="Avatar của tôi" />
+        </div>
+      </div>
+      <div class="hero-right">
+        <h1>I'm Phan Nhat Quan</h1>
+        <h2>Full-Stack <span class="highlight">Developer</span></h2>
+        <a href="#contact" class="contact-btn">Contact</a>
+      </div>
+    </section>
+
+    <!-- Projects Section Include -->
+    <div id="projects"></div>
+
+    <!-- About Section Include -->
+    <div id="about"></div>
+
+    <!-- Programming Languages Section Include -->
+    <div id="programming-languages"></div>
+
+    <!-- Contact Section Include -->
+    <div id="contact"></div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" aria-label="Scroll to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Include Footer -->
+    <div id="footer"></div>
+
+    <script src="/Portfolio/js/header.js"></script>
+    <script src="/Portfolio/js/footer.js"></script>
+    <script src="/Portfolio/js/about.js"></script>
+    <script src="/Portfolio/js/programming-languages.js"></script>
+    <script src="/Portfolio/js/projects.js"></script>
+    <script src="/Portfolio/js/contact.js"></script>
+    <script>
+      // Scroll to top button logic
+      const scrollBtn = document.getElementById("scrollToTopBtn");
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 200) {
+          scrollBtn.style.display = "block";
+        } else {
+          scrollBtn.style.display = "none";
+        }
+      });
+      scrollBtn.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>

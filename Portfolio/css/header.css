@@ -1,0 +1,210 @@
+/* Luôn hiển thị nav-toggle ở mọi kích thước nhỏ hơn 1025px, ưu tiên dưới 600px */
+@media (max-width: 600px) {
+  .nav-toggle {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 1001;
+  }
+}
+/* Ensure hamburger menu always visible on mobile */
+@media (max-width: 1024px) {
+  .nav-toggle {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem !important;
+    margin-left: 32px !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    height: 40px !important;
+    width: 40px !important;
+    line-height: 40px !important;
+    background: none;
+    border: none;
+    color: #00a896;
+    cursor: pointer;
+    z-index: 1001;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .nav-links {
+    display: none !important;
+  }
+  .nav-links.open {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .nav-toggle {
+    display: none !important;
+  }
+  .nav-links {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    max-width: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-toggle {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+/* Nav links style for mobile (hidden by default, shown when open) */
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 12px;
+    right: 12px;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 24px 0 18px 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+    z-index: 1000;
+    margin: 0 auto;
+    border-radius: 16px;
+    max-width: 96vw;
+  }
+  .nav-links.open {
+    display: flex !important;
+  }
+}
+
+/* Nav links style for desktop (always show) */
+@media (min-width: 1025px) {
+  .nav-links {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    max-width: none;
+  }
+}
+.nav-links.open {
+  display: flex !important;
+}
+
+/* Fix header height and padding for mobile */
+@media (max-width: 600px) {
+  .header,
+  #header {
+    height: 56px !important;
+    min-height: 0 !important;
+    padding: 0 12px !important;
+    box-sizing: border-box;
+  }
+  .header-logo,
+  .logo,
+  #header .logo {
+    font-size: 1.2rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 56px !important;
+  }
+  /* Remove old hamburger/menu-toggle rules, use only .nav-toggle */
+  nav,
+  #header nav {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+/* Hamburger menu styles */
+.nav-toggle {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+.nav-toggle .bar {
+  width: 28px;
+  height: 3px;
+  background: #00a896;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 10px;
+    position: relative;
+  }
+  .nav-toggle {
+    display: flex;
+    margin-left: 32px;
+  }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 12px;
+    right: 12px;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 24px 0 18px 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+    z-index: 1000;
+    display: none;
+    margin: 0 auto;
+    border-radius: 16px;
+    max-width: 96vw;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+}
+/* Header styles */
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #00a896;
+}

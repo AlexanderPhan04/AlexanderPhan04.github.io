@@ -1,0 +1,47 @@
+/* Scroll to Top Button */
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 32px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  background: #00a896;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 2000;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+#scrollToTopBtn:hover {
+  background: #028c6a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+}
+/* Base styles and resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #e8f5e9;
+  color: #222;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+footer {
+  background-color: #00a896;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
