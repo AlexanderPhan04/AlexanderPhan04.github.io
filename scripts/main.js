@@ -307,8 +307,8 @@ function renderBentoGrid() {
             <div class="flex flex-col ${
               item.colSpan === 2 ? "items-start" : "items-center text-center"
             }">
-                <div class="bg-white bg-opacity-20 rounded-lg w-fit p-3 text-white">
-                    <i class="${item.icon}"></i>
+                <div class="bg-white bg-opacity-20 rounded-lg w-fit p-3">
+                    <i class="${item.icon} text-neutral-800"></i>
                 </div>
                 <h3 class="mb-1 mt-3 text-sm font-medium text-white">${
                   currentTranslations[item.titleKey]
