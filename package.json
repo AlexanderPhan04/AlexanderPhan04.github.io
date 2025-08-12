@@ -1,0 +1,37 @@
+{
+  "name": "alexander-phan-portfolio",
+  "version": "1.0.0",
+  "description": "A modern, responsive portfolio website built with vanilla HTML, CSS, and JavaScript",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx live-server --port=3000 --host=localhost",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "gh-pages -d .",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "portfolio",
+    "website",
+    "html",
+    "css",
+    "javascript",
+    "responsive",
+    "modern"
+  ],
+  "author": "Alexander Phan",
+  "license": "MIT",
+  "homepage": "https://alexanderphan.github.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexanderPhan/AlexanderPhan.github.io.git"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "gh-pages": "^6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

@@ -3,92 +3,655 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Phan Nhat Quan Portfolio</title>
-    <link rel="stylesheet" href="/Portfolio/css/base.css" />
-    <link rel="stylesheet" href="/Portfolio/css/header.css" />
-    <link rel="stylesheet" href="/Portfolio/css/nav.css" />
-    <link rel="stylesheet" href="/Portfolio/css/hero.css" />
-    <link rel="stylesheet" href="/Portfolio/css/projects.css" />
-    <link rel="stylesheet" href="/Portfolio/css/about.css" />
-    <link rel="stylesheet" href="/Portfolio/css/programming-languages.css" />
-    <link rel="stylesheet" href="/Portfolio/css/social.css" />
-    <link rel="stylesheet" href="/Portfolio/css/responsive.css" />
-    <link rel="icon" type="image/png" href="/Portfolio/images/icon.jpg" />
-    <meta name="theme-color" content="#00a896" />
-    <!-- Màu xanh lá cây từ CV -->
-    <!-- iOS support -->
-    <meta name="mobile-web-app-capable" content="yes" />
+    <title>Alexander Phan | Personal Website</title>
     <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
+      name="description"
+      content="Phan Nhật Quân (Alexander Phan) - Lập trình viên Fullstack tại VTC Academy, quê Nam Định. Personal website, portfolio, blog."
     />
-    <!-- Font Awesome CDN for icon -->
+    <meta
+      name="keywords"
+      content="Phan Nhật Quân, Alexander Phan, lập trình viên fullstack, developer, portfolio, VTC Academy, Nam Định"
+    />
+    <meta name="author" content="Phan Nhật Quân (Alexander Phan)" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://alexanderphan04.github.io/" />
+    <meta property="og:title" content="Alexander Phan | Personal Website" />
+    <meta
+      property="og:description"
+      content="Phan Nhật Quân - Lập trình viên Fullstack tại VTC Academy, quê Nam Định."
+    />
+    <meta property="og:image" content="https://alexstudio.id.vn/avatar.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://alexanderphan04.github.io/" />
+    <meta
+      property="twitter:title"
+      content="Alexander Phan | Personal Website"
+    />
+    <meta
+      property="twitter:description"
+      content="Phan Nhật Quân - Lập trình viên Fullstack tại VTC Academy, quê Nam Định."
+    />
+    <meta
+      property="twitter:image"
+      content="https://alexstudio.id.vn/avatar.jpg"
+    />
+
+    <!-- Social Links -->
+    <link rel="me" href="https://www.facebook.com/Dark.Heart03" />
+    <link rel="me" href="https://github.com/AlexanderPhan04" />
+    <link rel="me" href="mailto:quannnd2004@gmail.com" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="favicon.svg" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <meta
-      name="apple-mobile-web-app-title"
-      content="Phan Nhat Quan Portfolio"
-    />
-  </head>
-  <body>
-    <!-- Include Header -->
-    <div id="header"></div>
 
-    <!-- Home Section (Hero) -->
-    <section class="hero" id="home">
-      <div class="hero-left">
-        <div class="avatar">
-          <img src="/Portfolio/images/PhanQuan.jpg" alt="Avatar của tôi" />
-        </div>
-      </div>
-      <div class="hero-right">
-        <h1>I'm Phan Nhat Quan</h1>
-        <h2>Full-Stack <span class="highlight">Developer</span></h2>
-        <a href="#contact" class="contact-btn">Contact</a>
-      </div>
-    </section>
-
-    <!-- Projects Section Include -->
-    <div id="projects"></div>
-
-    <!-- About Section Include -->
-    <div id="about"></div>
-
-    <!-- Programming Languages Section Include -->
-    <div id="programming-languages"></div>
-
-    <!-- Contact Section Include -->
-    <div id="contact"></div>
-
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTopBtn" aria-label="Scroll to top">
-      <i class="fa-solid fa-arrow-up"></i>
-    </button>
-
-    <!-- Include Footer -->
-    <div id="footer"></div>
-
-    <script src="/Portfolio/js/header.js"></script>
-    <script src="/Portfolio/js/footer.js"></script>
-    <script src="/Portfolio/js/about.js"></script>
-    <script src="/Portfolio/js/programming-languages.js"></script>
-    <script src="/Portfolio/js/projects.js"></script>
-    <script src="/Portfolio/js/contact.js"></script>
-    <script>
-      // Scroll to top button logic
-      const scrollBtn = document.getElementById("scrollToTopBtn");
-      window.addEventListener("scroll", function () {
-        if (window.scrollY > 200) {
-          scrollBtn.style.display = "block";
-        } else {
-          scrollBtn.style.display = "none";
-        }
-      });
-      scrollBtn.addEventListener("click", function () {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Phan Nhật Quân",
+        "alternateName": "Alexander Phan",
+        "birthDate": "2004-03-30",
+        "homeLocation": {
+          "@type": "Place",
+          "name": "Nam Định"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "VTC Academy"
+        },
+        "jobTitle": "Fullstack Developer",
+        "url": "https://alexstudio.id.vn/",
+        "sameAs": [
+          "https://www.facebook.com/Dark.Heart03",
+          "https://github.com/AlexanderPhan04"
+        ],
+        "email": "quannnd2004@gmail.com"
+      }
     </script>
+  </head>
+  <body
+    class="bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 transition-colors duration-300"
+  >
+    <!-- Loading overlay -->
+    <div
+      id="loading"
+      class="fixed inset-0 bg-neutral-50 dark:bg-neutral-900 z-50 flex items-center justify-center"
+    >
+      <div class="loader"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto lg:px-12">
+      <div class="mx-auto flex flex-col lg:flex-row lg:gap-5 lg:py-4">
+        <!-- Sidebar -->
+        <header class="lg:w-1/5">
+          <div
+            class="sticky top-0 z-10 flex flex-col transition-all duration-300 lg:py-8"
+          >
+            <!-- Profile Section -->
+            <div
+              id="profile"
+              class="fixed z-20 w-full bg-neutral-50 dark:bg-neutral-900 p-5 shadow-sm dark:border-b dark:border-neutral-800 lg:relative lg:border-none lg:!bg-transparent lg:p-0 xl:shadow-none"
+            >
+              <div
+                class="flex items-center justify-between md:px-2 lg:flex-col lg:space-y-4"
+              >
+                <!-- Profile Header -->
+                <div
+                  class="flex w-full flex-grow items-center gap-4 lg:flex-col lg:gap-0.5"
+                >
+                  <img
+                    src="images/PhanQuan.jpg"
+                    alt="Alexander Phan"
+                    class="w-20 h-20 lg:w-24 lg:h-24 rounded-full border-2 border-neutral-400 dark:border-neutral-600 object-cover transition-transform hover:scale-105"
+                  />
+
+                  <div class="mt-1 flex items-center gap-2 lg:mt-4">
+                    <h2
+                      class="flex-grow text-lg font-medium lg:text-xl cursor-pointer"
+                      onclick="navigateToHome()"
+                    >
+                      Alexander Phan
+                    </h2>
+                    <i
+                      class="fas fa-check-circle text-blue-400"
+                      title="Verified"
+                    ></i>
+                  </div>
+
+                  <div
+                    class="hidden text-sm text-neutral-600 dark:text-neutral-500 lg:flex"
+                  >
+                    @alexanderphan
+                  </div>
+
+                  <div class="hidden justify-between gap-6 lg:mt-4 lg:flex">
+                    <!-- Language Toggle -->
+                    <button
+                      id="lang-toggle"
+                      class="p-2 rounded-lg bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors"
+                      title="Toggle Language"
+                    >
+                      <i class="fas fa-language"></i>
+                    </button>
+
+                    <!-- Theme Toggle -->
+                    <button
+                      id="theme-toggle"
+                      class="p-2 rounded-lg bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors"
+                      title="Toggle Theme"
+                    >
+                      <i class="fas fa-sun dark:hidden"></i>
+                      <i class="fas fa-moon hidden dark:inline"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Mobile Controls -->
+                <div class="flex items-center gap-5 lg:hidden">
+                  <div class="flex gap-4">
+                    <button
+                      id="lang-toggle-mobile"
+                      class="p-2 rounded-lg bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors"
+                      title="Toggle Language"
+                    >
+                      <i class="fas fa-language"></i>
+                    </button>
+                    <button
+                      id="theme-toggle-mobile"
+                      class="p-2 rounded-lg bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors"
+                      title="Toggle Theme"
+                    >
+                      <i class="fas fa-sun dark:hidden"></i>
+                      <i class="fas fa-moon hidden dark:inline"></i>
+                    </button>
+                  </div>
+                  <button
+                    id="mobile-menu-toggle"
+                    class="p-2 rounded-lg bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors"
+                  >
+                    <i class="fas fa-bars" id="menu-icon"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Mobile Menu -->
+              <div id="mobile-menu" class="hidden mt-4 lg:hidden">
+                <nav class="space-y-2">
+                  <a
+                    href="#home"
+                    class="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                  >
+                    <i class="fas fa-home w-5"></i>
+                    <span data-translate="menu_home">Home</span>
+                  </a>
+                  <a
+                    href="#about"
+                    class="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                  >
+                    <i class="fas fa-user w-5"></i>
+                    <span data-translate="menu_about">About</span>
+                  </a>
+                  <a
+                    href="#achievements"
+                    class="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                  >
+                    <i class="fas fa-certificate w-5"></i>
+                    <span data-translate="menu_achievements">Achievements</span>
+                  </a>
+                  <a
+                    href="#projects"
+                    class="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                  >
+                    <i class="fas fa-folder w-5"></i>
+                    <span data-translate="menu_projects">Projects</span>
+                  </a>
+                  <a
+                    href="#contact"
+                    class="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                  >
+                    <i class="fas fa-envelope w-5"></i>
+                    <span data-translate="menu_contact">Contact</span>
+                  </a>
+                </nav>
+              </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:block">
+              <div
+                class="border-t border-neutral-200 dark:border-neutral-800 my-4"
+              ></div>
+              <nav class="hidden lg:block space-y-2">
+                <a
+                  href="#home"
+                  class="menu-item active flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                >
+                  <i class="fas fa-home w-5"></i>
+                  <span data-translate="menu_home">Home</span>
+                </a>
+                <a
+                  href="#about"
+                  class="menu-item flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                >
+                  <i class="fas fa-user w-5"></i>
+                  <span data-translate="menu_about">About</span>
+                </a>
+                <a
+                  href="#achievements"
+                  class="menu-item flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                >
+                  <i class="fas fa-certificate w-5"></i>
+                  <span data-translate="menu_achievements">Achievements</span>
+                </a>
+                <a
+                  href="#projects"
+                  class="menu-item flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                >
+                  <i class="fas fa-folder w-5"></i>
+                  <span data-translate="menu_projects">Projects</span>
+                </a>
+                <a
+                  href="#contact"
+                  class="menu-item flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                >
+                  <i class="fas fa-envelope w-5"></i>
+                  <span data-translate="menu_contact">Contact</span>
+                </a>
+              </nav>
+              <div
+                class="border-t border-neutral-200 dark:border-neutral-800 my-4"
+              ></div>
+              <div
+                class="text-xs text-neutral-500 dark:text-neutral-400 text-center"
+              >
+                © 2025 Alexander Phan
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Main Content -->
+        <main
+          class="max-w-[854px] transition-all duration-300 lg:w-4/5 pt-24 lg:pt-0"
+        >
+          <!-- Home Section -->
+          <section
+            id="home"
+            class="section active p-6 space-y-8"
+            data-aos="fade-up"
+          >
+            <!-- Introduction -->
+            <section class="space-y-2 bg-cover bg-no-repeat">
+              <div
+                class="text-3xl font-medium text-neutral-900 dark:text-neutral-50"
+              >
+                <h1 data-translate="intro">Hi, I'm Alexander Phan</h1>
+              </div>
+
+              <div class="space-y-4">
+                <ul
+                  class="ml-5 flex list-disc flex-col gap-y-2 text-neutral-700 dark:text-neutral-400"
+                >
+                  <li data-translate="location">Based in Vietnam 🇻🇳</li>
+                  <li data-translate="location_type">Remote</li>
+                </ul>
+                <p
+                  class="mt-6 leading-loose text-neutral-600 dark:text-neutral-300"
+                  data-translate="resume"
+                >
+                  Experienced and passionate Fullstack Developer specializing in
+                  building scalable and efficient digital solutions. On the
+                  frontend, I work with React, Next.js, TypeScript, and Tailwind
+                  CSS to craft responsive and accessible user interfaces. On the
+                  backend, I develop robust services using Node.js, and for
+                  mobile, I build cross-platform apps with React Native. I'm a
+                  collaborative and detail-oriented engineer committed to
+                  delivering well-structured, high-performance applications
+                  across platforms.
+                </p>
+              </div>
+            </section>
+
+            <!-- Breakline -->
+            <div
+              class="border-t border-neutral-200 dark:border-neutral-800 my-8"
+            ></div>
+
+            <!-- Skills Section -->
+            <section class="space-y-6">
+              <div class="space-y-2">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-code text-xl"></i>
+                  <h2
+                    class="text-2xl font-medium"
+                    data-translate="skills_title"
+                  >
+                    Skills
+                  </h2>
+                </div>
+                <p
+                  class="text-neutral-600 dark:text-neutral-400"
+                  data-translate="skills_subtitle"
+                >
+                  My professional skills.
+                </p>
+              </div>
+
+              <div
+                class="grid w-full grid-cols-6 gap-x-4 gap-y-8 py-2 md:grid-cols-10 lg:grid-cols-11"
+              >
+                <!-- Skills will be populated by JavaScript -->
+              </div>
+            </section>
+
+            <!-- Breakline -->
+            <div
+              class="border-t border-neutral-200 dark:border-neutral-800 my-8"
+            ></div>
+
+            <!-- Bento Grid Section -->
+            <section class="space-y-5">
+              <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-th-large text-xl"></i>
+                  <h2 class="text-2xl font-medium" data-translate="bento_title">
+                    Featured Sections
+                  </h2>
+                </div>
+                <p
+                  class="text-neutral-600 dark:text-neutral-400"
+                  data-translate="bento_subtitle"
+                >
+                  Explore everything I've crafted, contributed, and
+                  accomplished.
+                </p>
+              </div>
+
+              <div
+                class="grid grid-cols-1 gap-2 md:grid-cols-4"
+                id="bento-grid"
+              >
+                <!-- Bento cards will be populated by JavaScript -->
+              </div>
+            </section>
+          </section>
+
+          <!-- About Section -->
+          <section id="about" class="section p-6 space-y-8" data-aos="fade-up">
+            <div class="space-y-6">
+              <div>
+                <h1
+                  class="text-3xl font-medium mb-2"
+                  data-translate="about_title"
+                >
+                  About
+                </h1>
+                <p
+                  class="text-neutral-600 dark:text-neutral-400"
+                  data-translate="about_description"
+                >
+                  A brief introduction to who I am.
+                </p>
+              </div>
+
+              <div class="space-y-6">
+                <p
+                  class="leading-loose text-neutral-600 dark:text-neutral-300"
+                  data-translate="about_p1"
+                >
+                  Hello there! Thank you for visiting my personal website. I'm
+                  Alexander Phan, a passionate Fullstack Developer with
+                  expertise in building impactful software products. My stack
+                  includes modern frontend technologies like React, Next.js,
+                  TypeScript, and Tailwind CSS, as well as backend development
+                  using Node.js and Python.
+                </p>
+
+                <p
+                  class="leading-loose text-neutral-600 dark:text-neutral-300"
+                  data-translate="about_p2"
+                >
+                  I enjoy creating solutions that are both user-friendly and
+                  performant. Whether it's building intuitive interfaces or
+                  architecting backend services, I aim to bring efficiency and
+                  clarity into every layer of the application. I'm a fast
+                  learner who thrives in dynamic environments, and I enjoy
+                  solving complex problems collaboratively.
+                </p>
+
+                <p
+                  class="leading-loose text-neutral-600 dark:text-neutral-300"
+                  data-translate="about_p3"
+                >
+                  I believe that great communication and team synergy are key to
+                  success in software development. My experience has shaped my
+                  technical and analytical skills, as well as my leadership
+                  qualities. I'm always excited to work in teams, learn from
+                  others, and contribute to impactful projects.
+                </p>
+
+                <p
+                  class="leading-loose text-neutral-600 dark:text-neutral-300"
+                  data-translate="about_p4"
+                >
+                  Best regards,<br />Alexander Phan
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Achievements Section -->
+          <section
+            id="achievements"
+            class="section p-6 space-y-8"
+            data-aos="fade-up"
+          >
+            <div>
+              <h1
+                class="text-3xl font-medium mb-2"
+                data-translate="achievements_title"
+              >
+                Achievements
+              </h1>
+              <p
+                class="text-neutral-600 dark:text-neutral-400"
+                data-translate="achievements_description"
+              >
+                A curated collection of certificates and badges I've earned
+                throughout my professional and academic journey.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Achievement cards will be populated by JavaScript -->
+            </div>
+          </section>
+
+          <!-- Projects Section -->
+          <section
+            id="projects"
+            class="section p-6 space-y-8"
+            data-aos="fade-up"
+          >
+            <div>
+              <h1
+                class="text-3xl font-medium mb-2"
+                data-translate="projects_title"
+              >
+                Projects
+              </h1>
+              <p
+                class="text-neutral-600 dark:text-neutral-400"
+                data-translate="projects_description"
+              >
+                A showcase of both private and open-source projects I've built
+                or contributed to.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Project cards will be populated by JavaScript -->
+            </div>
+          </section>
+
+          <!-- Contact Section -->
+          <section
+            id="contact"
+            class="section p-6 space-y-8"
+            data-aos="fade-up"
+          >
+            <div>
+              <h1
+                class="text-3xl font-medium mb-2"
+                data-translate="contact_title"
+              >
+                Contact
+              </h1>
+              <p
+                class="text-neutral-600 dark:text-neutral-400"
+                data-translate="contact_description"
+              >
+                Let's get in touch and discuss opportunities.
+              </p>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="max-w-4xl mx-auto">
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Email -->
+                <div
+                  class="flex flex-col items-center text-center p-6 bg-white dark:bg-neutral-800 rounded-lg shadow-sm hover:shadow-md transition-all"
+                >
+                  <div
+                    class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mb-4"
+                  >
+                    <i
+                      class="fas fa-envelope text-blue-600 dark:text-blue-400 text-xl"
+                    ></i>
+                  </div>
+                  <h3
+                    class="font-medium mb-2"
+                    data-translate="contact_email_label"
+                  >
+                    Email
+                  </h3>
+                  <a
+                    href="mailto:quannnd2004@gmail.com"
+                    class="text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm break-all"
+                  >
+                    quannnd2004@gmail.com
+                  </a>
+                </div>
+
+                <!-- Facebook -->
+                <div
+                  class="flex flex-col items-center text-center p-6 bg-white dark:bg-neutral-800 rounded-lg shadow-sm hover:shadow-md transition-all"
+                >
+                  <div
+                    class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mb-4"
+                  >
+                    <i
+                      class="fab fa-facebook text-blue-600 dark:text-blue-400 text-xl"
+                    ></i>
+                  </div>
+                  <h3
+                    class="font-medium mb-2"
+                    data-translate="contact_facebook_label"
+                  >
+                    Facebook
+                  </h3>
+                  <a
+                    href="https://www.facebook.com/Dark.Heart03"
+                    target="_blank"
+                    class="text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    Dark.Heart03
+                  </a>
+                </div>
+
+                <!-- GitHub -->
+                <div
+                  class="flex flex-col items-center text-center p-6 bg-white dark:bg-neutral-800 rounded-lg shadow-sm hover:shadow-md transition-all"
+                >
+                  <div
+                    class="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4"
+                  >
+                    <i
+                      class="fab fa-github text-gray-700 dark:text-gray-300 text-xl"
+                    ></i>
+                  </div>
+                  <h3
+                    class="font-medium mb-2"
+                    data-translate="contact_github_label"
+                  >
+                    GitHub
+                  </h3>
+                  <a
+                    href="https://github.com/AlexanderPhan04"
+                    target="_blank"
+                    class="text-neutral-600 dark:text-neutral-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+                  >
+                    AlexanderPhan04
+                  </a>
+                </div>
+
+                <!-- Website -->
+                <div
+                  class="flex flex-col items-center text-center p-6 bg-white dark:bg-neutral-800 rounded-lg shadow-sm hover:shadow-md transition-all"
+                >
+                  <div
+                    class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mb-4"
+                  >
+                    <i
+                      class="fas fa-globe text-purple-600 dark:text-purple-400 text-xl"
+                    ></i>
+                  </div>
+                  <h3
+                    class="font-medium mb-2"
+                    data-translate="contact_website_label"
+                  >
+                    Website
+                  </h3>
+                  <a
+                    href="https://alexstudio.id.vn/"
+                    target="_blank"
+                    class="text-neutral-600 dark:text-neutral-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                  >
+                    alexstudio.id.vn
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="scripts/main.js"></script>
   </body>
 </html>
