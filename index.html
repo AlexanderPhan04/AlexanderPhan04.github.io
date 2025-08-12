@@ -116,37 +116,79 @@
               class="fixed z-20 w-full bg-neutral-50 dark:bg-neutral-900 p-5 shadow-sm dark:border-b dark:border-neutral-800 lg:relative lg:border-none lg:!bg-transparent lg:p-0 xl:shadow-none"
             >
               <div
-                class="flex items-center justify-between md:px-2 lg:flex-col lg:space-y-4"
+                class="flex items-start justify-between md:px-2 lg:flex-col lg:space-y-4 lg:items-center"
               >
                 <!-- Profile Header -->
-                <div
-                  class="flex w-full flex-grow items-center gap-4 lg:flex-col lg:gap-0.5"
-                >
-                  <img
-                    src="images/PhanQuan.jpg"
-                    alt="Alexander Phan"
-                    class="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full border-2 border-neutral-400 dark:border-neutral-600 object-cover avatar-responsive transition-transform hover:scale-105"
-                  />
+                <div class="flex flex-col w-full lg:items-center">
+                  <!-- Avatar and Name Row -->
+                  <div
+                    class="flex items-center gap-4 w-full sm:gap-6 lg:flex-col lg:gap-2"
+                  >
+                    <img
+                      src="images/PhanQuan.jpg"
+                      alt="Alexander Phan"
+                      class="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full border-2 border-neutral-400 dark:border-neutral-600 object-cover avatar-responsive transition-transform hover:scale-105"
+                    />
 
-                  <div class="mt-1 flex items-center gap-2 lg:mt-4">
-                    <h2
-                      class="flex-grow text-base sm:text-lg lg:text-xl font-medium cursor-pointer"
-                      onclick="navigateToHome()"
+                    <div class="flex items-center gap-2 lg:mt-2">
+                      <h2
+                        class="text-base sm:text-lg lg:text-xl font-medium cursor-pointer"
+                        onclick="navigateToHome()"
+                      >
+                        Alexander Phan
+                      </h2>
+                      <i
+                        class="fas fa-check-circle text-blue-400"
+                        title="Verified"
+                      ></i>
+                    </div>
+                  </div>
+
+                  <!-- Mobile Toggle Switches (below avatar on mobile only) -->
+                  <div class="mobile-switches-container sm:hidden">
+                    <!-- Mobile Language Toggle Switch -->
+                    <div
+                      class="lang-switch-container bg-neutral-800 dark:bg-neutral-200 rounded-full"
                     >
-                      Alexander Phan
-                    </h2>
-                    <i
-                      class="fas fa-check-circle text-blue-400"
-                      title="Verified"
-                    ></i>
+                      <div class="lang-switch-slider"></div>
+                      <div class="lang-switch-track">
+                        <span
+                          class="lang-option text-white dark:text-neutral-800"
+                          >US</span
+                        >
+                        <span
+                          class="lang-option text-neutral-400 dark:text-neutral-600"
+                          >VN</span
+                        >
+                      </div>
+                    </div>
+                    <!-- Mobile Theme Toggle Switch -->
+                    <div
+                      class="theme-switch-container bg-neutral-800 dark:bg-neutral-200 rounded-full"
+                    >
+                      <div class="theme-switch-slider"></div>
+                      <div class="theme-switch-track">
+                        <span
+                          class="theme-option text-white dark:text-neutral-800"
+                        >
+                          <i class="fas fa-sun"></i>
+                        </span>
+                        <span
+                          class="theme-option text-neutral-400 dark:text-neutral-600"
+                        >
+                          <i class="fas fa-moon"></i>
+                        </span>
+                      </div>
+                    </div>
                   </div>
 
                   <div
-                    class="hidden text-sm text-neutral-600 dark:text-neutral-500 lg:flex"
+                    class="hidden text-sm text-neutral-600 dark:text-neutral-500 lg:flex lg:mt-2"
                   >
                     @alexanderphan
                   </div>
 
+                  <!-- Desktop Toggle Switches -->
                   <div class="hidden justify-between gap-6 lg:mt-4 lg:flex">
                     <!-- Language Toggle Switch -->
                     <div
@@ -186,44 +228,8 @@
                   </div>
                 </div>
 
-                <!-- Mobile Controls -->
-                <div class="flex items-center gap-5 lg:hidden">
-                  <div class="flex gap-4">
-                    <!-- Mobile Language Toggle Switch -->
-                    <div
-                      class="lang-switch-container bg-neutral-800 dark:bg-neutral-200 rounded-full"
-                    >
-                      <div class="lang-switch-slider"></div>
-                      <div class="lang-switch-track">
-                        <span
-                          class="lang-option text-white dark:text-neutral-800"
-                          >US</span
-                        >
-                        <span
-                          class="lang-option text-neutral-400 dark:text-neutral-600"
-                          >VN</span
-                        >
-                      </div>
-                    </div>
-                    <!-- Mobile Theme Toggle Switch -->
-                    <div
-                      class="theme-switch-container bg-neutral-800 dark:bg-neutral-200 rounded-full"
-                    >
-                      <div class="theme-switch-slider"></div>
-                      <div class="theme-switch-track">
-                        <span
-                          class="theme-option text-white dark:text-neutral-800"
-                        >
-                          <i class="fas fa-sun"></i>
-                        </span>
-                        <span
-                          class="theme-option text-neutral-400 dark:text-neutral-600"
-                        >
-                          <i class="fas fa-moon"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                <!-- Mobile Hamburger Menu (stays in top right) -->
+                <div class="lg:hidden">
                   <button
                     id="mobile-menu-toggle"
                     class="p-2 rounded-lg bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors"

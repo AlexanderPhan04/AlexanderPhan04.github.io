@@ -1528,3 +1528,34 @@ button:active {
   z-index: 1;
   transition: color 0.3s ease;
 }
+
+/* Mobile Layout for Toggle Switches */
+.mobile-switches-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  /* Show mobile switches only on small screens */
+  .mobile-switches-container {
+    display: flex !important;
+  }
+}
+
+/* Hide mobile switches on larger screens */
+@media (min-width: 641px) {
+  .mobile-switches-container {
+    display: none !important;
+  }
+}
+
+/* Smooth transitions for all layout changes */
+.mobile-switches-container,
+.mobile-switches-container * {
+  transition: all 0.3s ease;
+}
