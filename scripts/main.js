@@ -102,27 +102,27 @@ const translations = {
 
 // Skills data
 const skills = [
-  //   { name: "HTML", icon: "fab fa-html5", color: "#e34c26" },
-  //   { name: "CSS", icon: "fab fa-css3-alt", color: "#1572b6" },
-  //   { name: "JavaScript", icon: "fab fa-js-square", color: "#f7df1e" },
-  //   { name: "TypeScript", icon: "fab fa-js-square", color: "#3178c6" },
-  //   { name: "React", icon: "fab fa-react", color: "#61dafb" },
-  //   { name: "Next.js", icon: "fas fa-code", color: "#000000" },
-  //   { name: "Node.js", icon: "fab fa-node-js", color: "#339933" },
-  //   { name: "Python", icon: "fab fa-python", color: "#3776ab" },
-  //   { name: "Git", icon: "fab fa-git-alt", color: "#f05032" },
-  //   { name: "GitHub", icon: "fab fa-github", color: "#181717" },
-  //   { name: "VS Code", icon: "fas fa-code", color: "#007acc" },
-  //   { name: "Firebase", icon: "fas fa-fire", color: "#ffca28" },
-  //   { name: "MongoDB", icon: "fas fa-database", color: "#47a248" },
-  //   { name: "MySQL", icon: "fas fa-database", color: "#4479a1" },
-  //   { name: "Docker", icon: "fab fa-docker", color: "#2496ed" },
-  //   { name: "AWS", icon: "fab fa-aws", color: "#ff9900" },
-  //   { name: "Tailwind", icon: "fas fa-palette", color: "#06b6d4" },
-  //   { name: "Bootstrap", icon: "fab fa-bootstrap", color: "#7952b3" },
-  //   { name: "Sass", icon: "fab fa-sass", color: "#cc6699" },
-  //   { name: "Vue.js", icon: "fab fa-vuejs", color: "#4fc08d" },
-  //   { name: "Express", icon: "fas fa-server", color: "#000000" },
+  { name: "HTML", icon: "fab fa-html5", color: "#e34c26" },
+  { name: "CSS", icon: "fab fa-css3-alt", color: "#1572b6" },
+  { name: "JavaScript", icon: "fab fa-js-square", color: "#f7df1e" },
+  { name: "TypeScript", icon: "fab fa-js-square", color: "#3178c6" },
+  { name: "React", icon: "fab fa-react", color: "#61dafb" },
+  { name: "Next.js", icon: "fas fa-code", color: "#000000" },
+  { name: "Node.js", icon: "fab fa-node-js", color: "#339933" },
+  { name: "Python", icon: "fab fa-python", color: "#3776ab" },
+  { name: "Git", icon: "fab fa-git-alt", color: "#f05032" },
+  { name: "GitHub", icon: "fab fa-github", color: "#181717" },
+  { name: "VS Code", icon: "fas fa-code", color: "#007acc" },
+  { name: "Firebase", icon: "fas fa-fire", color: "#ffca28" },
+  { name: "MongoDB", icon: "fas fa-database", color: "#47a248" },
+  { name: "MySQL", icon: "fas fa-database", color: "#4479a1" },
+  { name: "Docker", icon: "fab fa-docker", color: "#2496ed" },
+  { name: "AWS", icon: "fab fa-aws", color: "#ff9900" },
+  { name: "Tailwind", icon: "fas fa-palette", color: "#06b6d4" },
+  { name: "Bootstrap", icon: "fab fa-bootstrap", color: "#7952b3" },
+  { name: "Sass", icon: "fab fa-sass", color: "#cc6699" },
+  { name: "Vue.js", icon: "fab fa-vuejs", color: "#4fc08d" },
+  { name: "Express", icon: "fas fa-server", color: "#000000" },
 ];
 
 // Bento grid data
@@ -279,7 +279,7 @@ function updateLanguage(lang) {
 
 // Render skills
 function renderSkills() {
-  const skillsContainer = document.querySelector(".grid.w-full");
+  const skillsContainer = document.getElementById("skills-container");
   if (!skillsContainer) return;
 
   skillsContainer.innerHTML = "";
@@ -287,11 +287,20 @@ function renderSkills() {
   skills.forEach((skill) => {
     const skillElement = document.createElement("div");
     skillElement.className = "skill-icon";
-    skillElement.style.color = skill.color;
+    skillElement.style.setProperty("--skill-color", skill.color);
     skillElement.innerHTML = `
-            <i class="${skill.icon}" style="font-size: 1.5rem;"></i>
+            <i class="${skill.icon}" style="color: ${skill.color};"></i>
         `;
     skillElement.title = skill.name;
+
+    // Add tooltip functionality
+    skillElement.addEventListener("mouseenter", function (e) {
+      showTooltip(e, skill.name);
+    });
+
+    skillElement.addEventListener("mouseleave", function () {
+      hideTooltip();
+    });
 
     skillsContainer.appendChild(skillElement);
   });
@@ -676,6 +685,43 @@ function updateThemeSwitch() {
       }
     });
   });
+}
+
+// Tooltip functions
+let tooltip = null;
+
+function showTooltip(event, text) {
+  // Remove existing tooltip
+  hideTooltip();
+
+  // Create new tooltip
+  tooltip = document.createElement("div");
+  tooltip.className = "skill-tooltip";
+  tooltip.textContent = text;
+  document.body.appendChild(tooltip);
+
+  // Position tooltip
+  const rect = event.target.closest(".skill-icon").getBoundingClientRect();
+  tooltip.style.left =
+    rect.left + rect.width / 2 - tooltip.offsetWidth / 2 + "px";
+  tooltip.style.top = rect.top - tooltip.offsetHeight - 8 + "px";
+
+  // Show tooltip with animation
+  setTimeout(() => {
+    tooltip.classList.add("show");
+  }, 10);
+}
+
+function hideTooltip() {
+  if (tooltip) {
+    tooltip.classList.remove("show");
+    setTimeout(() => {
+      if (tooltip && tooltip.parentNode) {
+        tooltip.parentNode.removeChild(tooltip);
+      }
+      tooltip = null;
+    }, 200);
+  }
 }
 
 // Export functions for global access
