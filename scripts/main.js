@@ -237,6 +237,11 @@ function initializeTheme() {
   if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
     document.documentElement.classList.add("dark");
   }
+
+  // Wait for DOM to be ready before updating switch
+  setTimeout(() => {
+    updateThemeSwitch();
+  }, 100);
 }
 
 // Initialize language
@@ -245,6 +250,10 @@ function initializeLanguage() {
   currentLang = savedLang;
   currentLanguage = savedLang;
   updateLanguage(currentLang);
+  // Wait for DOM to be ready before updating switch
+  setTimeout(() => {
+    updateLanguageSwitch();
+  }, 100);
 }
 
 // Update language
@@ -415,21 +424,17 @@ function renderAchievements() {
 
 // Initialize event listeners
 function initializeEventListeners() {
-  // Theme toggle
-  if (elements.themeToggle) {
-    elements.themeToggle.addEventListener("click", toggleTheme);
-  }
-  if (elements.themeToggleMobile) {
-    elements.themeToggleMobile.addEventListener("click", toggleTheme);
-  }
+  // Theme toggle - update to work with new switch design
+  const themeContainers = document.querySelectorAll(".theme-switch-container");
+  themeContainers.forEach((container) => {
+    container.addEventListener("click", toggleTheme);
+  });
 
-  // Language toggle
-  if (elements.langToggle) {
-    elements.langToggle.addEventListener("click", toggleLanguage);
-  }
-  if (elements.langToggleMobile) {
-    elements.langToggleMobile.addEventListener("click", toggleLanguage);
-  }
+  // Language toggle - update to work with new switch design
+  const langContainers = document.querySelectorAll(".lang-switch-container");
+  langContainers.forEach((container) => {
+    container.addEventListener("click", toggleLanguage);
+  });
 
   // Mobile menu toggle
   if (elements.mobileMenuToggle) {
@@ -467,12 +472,14 @@ function toggleTheme() {
   document.documentElement.classList.toggle("dark");
   const isDark = document.documentElement.classList.contains("dark");
   localStorage.setItem("theme", isDark ? "dark" : "light");
+  updateThemeSwitch();
 }
 
 // Toggle language
 function toggleLanguage() {
   const newLang = currentLang === "en" ? "vi" : "en";
   updateLanguage(newLang);
+  updateLanguageSwitch();
 }
 
 // Toggle mobile menu
@@ -583,6 +590,93 @@ const handleResize = debounce(() => {
 }, 250);
 
 window.addEventListener("resize", handleResize);
+
+// Update language switch appearance
+function updateLanguageSwitch() {
+  const sliders = document.querySelectorAll(".lang-switch-slider");
+  const tracks = document.querySelectorAll(".lang-switch-track");
+
+  sliders.forEach((slider) => {
+    if (currentLang === "vi") {
+      slider.classList.add("vietnamese");
+    } else {
+      slider.classList.remove("vietnamese");
+    }
+  });
+
+  tracks.forEach((track) => {
+    const options = track.querySelectorAll(".lang-option");
+    options.forEach((option, index) => {
+      // Remove all classes first
+      option.classList.remove(
+        "text-white",
+        "dark:text-neutral-800",
+        "text-neutral-400",
+        "dark:text-neutral-600"
+      );
+
+      if (currentLang === "vi") {
+        // VN is active (index 1)
+        if (index === 1) {
+          option.classList.add("text-white", "dark:text-neutral-800");
+        } else {
+          option.classList.add("text-neutral-400", "dark:text-neutral-600");
+        }
+      } else {
+        // US is active (index 0)
+        if (index === 0) {
+          option.classList.add("text-white", "dark:text-neutral-800");
+        } else {
+          option.classList.add("text-neutral-400", "dark:text-neutral-600");
+        }
+      }
+    });
+  });
+}
+
+// Update theme switch appearance
+function updateThemeSwitch() {
+  const sliders = document.querySelectorAll(".theme-switch-slider");
+  const tracks = document.querySelectorAll(".theme-switch-track");
+  const isDark = document.documentElement.classList.contains("dark");
+
+  sliders.forEach((slider) => {
+    if (isDark) {
+      slider.classList.add("dark-mode");
+    } else {
+      slider.classList.remove("dark-mode");
+    }
+  });
+
+  tracks.forEach((track) => {
+    const options = track.querySelectorAll(".theme-option");
+    options.forEach((option, index) => {
+      // Remove all classes first
+      option.classList.remove(
+        "text-white",
+        "dark:text-neutral-800",
+        "text-neutral-400",
+        "dark:text-neutral-600"
+      );
+
+      if (isDark) {
+        // Moon is active (index 1)
+        if (index === 1) {
+          option.classList.add("text-white", "dark:text-neutral-800");
+        } else {
+          option.classList.add("text-neutral-400", "dark:text-neutral-600");
+        }
+      } else {
+        // Sun is active (index 0)
+        if (index === 0) {
+          option.classList.add("text-white", "dark:text-neutral-800");
+        } else {
+          option.classList.add("text-neutral-400", "dark:text-neutral-600");
+        }
+      }
+    });
+  });
+}
 
 // Export functions for global access
 window.navigateToHome = navigateToHome;

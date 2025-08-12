@@ -148,45 +148,81 @@
                   </div>
 
                   <div class="hidden justify-between gap-6 lg:mt-4 lg:flex">
-                    <!-- Language Toggle -->
-                    <button
-                      id="lang-toggle"
-                      class="p-2 rounded-lg bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors"
-                      title="Toggle Language"
+                    <!-- Language Toggle Switch -->
+                    <div
+                      class="lang-switch-container bg-neutral-800 dark:bg-neutral-200 rounded-full"
                     >
-                      <i class="fas fa-language"></i>
-                    </button>
+                      <div class="lang-switch-slider"></div>
+                      <div class="lang-switch-track">
+                        <span
+                          class="lang-option text-white dark:text-neutral-800"
+                          >US</span
+                        >
+                        <span
+                          class="lang-option text-neutral-400 dark:text-neutral-600"
+                          >VN</span
+                        >
+                      </div>
+                    </div>
 
-                    <!-- Theme Toggle -->
-                    <button
-                      id="theme-toggle"
-                      class="p-2 rounded-lg bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors"
-                      title="Toggle Theme"
+                    <!-- Theme Toggle Switch -->
+                    <div
+                      class="theme-switch-container bg-neutral-800 dark:bg-neutral-200 rounded-full"
                     >
-                      <i class="fas fa-sun dark:hidden"></i>
-                      <i class="fas fa-moon hidden dark:inline"></i>
-                    </button>
+                      <div class="theme-switch-slider"></div>
+                      <div class="theme-switch-track">
+                        <span
+                          class="theme-option text-white dark:text-neutral-800"
+                        >
+                          <i class="fas fa-sun"></i>
+                        </span>
+                        <span
+                          class="theme-option text-neutral-400 dark:text-neutral-600"
+                        >
+                          <i class="fas fa-moon"></i>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <!-- Mobile Controls -->
                 <div class="flex items-center gap-5 lg:hidden">
                   <div class="flex gap-4">
-                    <button
-                      id="lang-toggle-mobile"
-                      class="p-2 rounded-lg bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors"
-                      title="Toggle Language"
+                    <!-- Mobile Language Toggle Switch -->
+                    <div
+                      class="lang-switch-container bg-neutral-800 dark:bg-neutral-200 rounded-full"
                     >
-                      <i class="fas fa-language"></i>
-                    </button>
-                    <button
-                      id="theme-toggle-mobile"
-                      class="p-2 rounded-lg bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors"
-                      title="Toggle Theme"
+                      <div class="lang-switch-slider"></div>
+                      <div class="lang-switch-track">
+                        <span
+                          class="lang-option text-white dark:text-neutral-800"
+                          >US</span
+                        >
+                        <span
+                          class="lang-option text-neutral-400 dark:text-neutral-600"
+                          >VN</span
+                        >
+                      </div>
+                    </div>
+                    <!-- Mobile Theme Toggle Switch -->
+                    <div
+                      class="theme-switch-container bg-neutral-800 dark:bg-neutral-200 rounded-full"
                     >
-                      <i class="fas fa-sun dark:hidden"></i>
-                      <i class="fas fa-moon hidden dark:inline"></i>
-                    </button>
+                      <div class="theme-switch-slider"></div>
+                      <div class="theme-switch-track">
+                        <span
+                          class="theme-option text-white dark:text-neutral-800"
+                        >
+                          <i class="fas fa-sun"></i>
+                        </span>
+                        <span
+                          class="theme-option text-neutral-400 dark:text-neutral-600"
+                        >
+                          <i class="fas fa-moon"></i>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                   <button
                     id="mobile-menu-toggle"
