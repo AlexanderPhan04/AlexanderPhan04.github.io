@@ -230,52 +230,83 @@
 
                 <!-- Mobile Hamburger Menu (stays in top right) -->
                 <div class="lg:hidden">
-                  <button
-                    id="mobile-menu-toggle"
-                    class="p-2 rounded-lg bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors"
-                  >
-                    <i class="fas fa-bars" id="menu-icon"></i>
+                  <button id="mobile-menu-toggle" class="modern-hamburger-btn">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
                   </button>
                 </div>
               </div>
 
               <!-- Mobile Menu -->
-              <div id="mobile-menu" class="hidden mt-4 lg:hidden">
-                <nav class="space-y-2">
+              <div id="mobile-menu" class="modern-mobile-menu">
+                <nav class="mobile-nav-container">
                   <a
                     href="#home"
-                    class="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                    class="modern-nav-item mobile-nav-item active"
+                    data-section="home"
                   >
-                    <i class="fas fa-home w-5"></i>
-                    <span data-translate="menu_home">Home</span>
+                    <div class="nav-item-icon">
+                      <i class="fas fa-home"></i>
+                    </div>
+                    <span class="nav-item-text" data-translate="menu_home"
+                      >Home</span
+                    >
+                    <div class="nav-item-indicator"></div>
                   </a>
                   <a
                     href="#about"
-                    class="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                    class="modern-nav-item mobile-nav-item"
+                    data-section="about"
                   >
-                    <i class="fas fa-user w-5"></i>
-                    <span data-translate="menu_about">About</span>
+                    <div class="nav-item-icon">
+                      <i class="fas fa-user"></i>
+                    </div>
+                    <span class="nav-item-text" data-translate="menu_about"
+                      >About</span
+                    >
+                    <div class="nav-item-indicator"></div>
                   </a>
                   <a
                     href="#achievements"
-                    class="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                    class="modern-nav-item mobile-nav-item"
+                    data-section="achievements"
                   >
-                    <i class="fas fa-certificate w-5"></i>
-                    <span data-translate="menu_achievements">Achievements</span>
+                    <div class="nav-item-icon">
+                      <i class="fas fa-trophy"></i>
+                    </div>
+                    <span
+                      class="nav-item-text"
+                      data-translate="menu_achievements"
+                      >Achievements</span
+                    >
+                    <div class="nav-item-indicator"></div>
                   </a>
                   <a
                     href="#projects"
-                    class="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                    class="modern-nav-item mobile-nav-item"
+                    data-section="projects"
                   >
-                    <i class="fas fa-folder w-5"></i>
-                    <span data-translate="menu_projects">Projects</span>
+                    <div class="nav-item-icon">
+                      <i class="fas fa-code"></i>
+                    </div>
+                    <span class="nav-item-text" data-translate="menu_projects"
+                      >Projects</span
+                    >
+                    <div class="nav-item-indicator"></div>
                   </a>
                   <a
                     href="#contact"
-                    class="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                    class="modern-nav-item mobile-nav-item"
+                    data-section="contact"
                   >
-                    <i class="fas fa-envelope w-5"></i>
-                    <span data-translate="menu_contact">Contact</span>
+                    <div class="nav-item-icon">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                    <span class="nav-item-text" data-translate="menu_contact"
+                      >Contact</span
+                    >
+                    <div class="nav-item-indicator"></div>
                   </a>
                 </nav>
               </div>
@@ -283,44 +314,72 @@
 
             <!-- Desktop Menu -->
             <div class="hidden md:block">
-              <div
-                class="border-t border-neutral-200 dark:border-neutral-800 my-4"
-              ></div>
-              <nav class="hidden lg:block space-y-2">
+              <div class="modern-nav-divider"></div>
+              <nav class="hidden lg:block desktop-nav-container">
                 <a
                   href="#home"
-                  class="menu-item active flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                  class="modern-nav-item desktop-nav-item active"
+                  data-section="home"
                 >
-                  <i class="fas fa-home w-5"></i>
-                  <span data-translate="menu_home">Home</span>
+                  <div class="nav-item-icon">
+                    <i class="fas fa-home"></i>
+                  </div>
+                  <span class="nav-item-text" data-translate="menu_home"
+                    >Home</span
+                  >
+                  <div class="nav-item-indicator"></div>
                 </a>
                 <a
                   href="#about"
-                  class="menu-item flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                  class="modern-nav-item desktop-nav-item"
+                  data-section="about"
                 >
-                  <i class="fas fa-user w-5"></i>
-                  <span data-translate="menu_about">About</span>
+                  <div class="nav-item-icon">
+                    <i class="fas fa-user"></i>
+                  </div>
+                  <span class="nav-item-text" data-translate="menu_about"
+                    >About</span
+                  >
+                  <div class="nav-item-indicator"></div>
                 </a>
                 <a
                   href="#achievements"
-                  class="menu-item flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                  class="modern-nav-item desktop-nav-item"
+                  data-section="achievements"
                 >
-                  <i class="fas fa-certificate w-5"></i>
-                  <span data-translate="menu_achievements">Achievements</span>
+                  <div class="nav-item-icon">
+                    <i class="fas fa-trophy"></i>
+                  </div>
+                  <span class="nav-item-text" data-translate="menu_achievements"
+                    >Achievements</span
+                  >
+                  <div class="nav-item-indicator"></div>
                 </a>
                 <a
                   href="#projects"
-                  class="menu-item flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                  class="modern-nav-item desktop-nav-item"
+                  data-section="projects"
                 >
-                  <i class="fas fa-folder w-5"></i>
-                  <span data-translate="menu_projects">Projects</span>
+                  <div class="nav-item-icon">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <span class="nav-item-text" data-translate="menu_projects"
+                    >Projects</span
+                  >
+                  <div class="nav-item-indicator"></div>
                 </a>
                 <a
                   href="#contact"
-                  class="menu-item flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                  class="modern-nav-item desktop-nav-item"
+                  data-section="contact"
                 >
-                  <i class="fas fa-envelope w-5"></i>
-                  <span data-translate="menu_contact">Contact</span>
+                  <div class="nav-item-icon">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <span class="nav-item-text" data-translate="menu_contact"
+                    >Contact</span
+                  >
+                  <div class="nav-item-indicator"></div>
                 </a>
               </nav>
               <div
@@ -430,7 +489,7 @@
               </div>
 
               <div
-                class="grid grid-cols-1 gap-2 md:grid-cols-4"
+                class="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2"
                 id="bento-grid"
               >
                 <!-- Bento cards will be populated by JavaScript -->

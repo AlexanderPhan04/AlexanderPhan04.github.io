@@ -747,26 +747,312 @@ body {
   transform: translateY(0);
 }
 
-/* Menu item styles */
-.menu-item {
-  text-decoration: none;
+/* Modern Navigation Styles */
+
+/* Modern Hamburger Button */
+.modern-hamburger-btn {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(102, 126, 234, 0.25);
+  backdrop-filter: blur(10px);
 }
 
-.menu-item:hover {
-  text-decoration: none;
+.modern-hamburger-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.35);
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
 }
 
-/* Menu item active state */
-.menu-item.active {
-  background-color: #e5e5e5;
-  color: #2563eb;
-  text-decoration: none;
+.modern-hamburger-btn:active {
+  transform: translateY(0);
 }
 
-.dark .menu-item.active {
-  background-color: #404040;
-  color: #60a5fa;
+.hamburger-line {
+  width: 18px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.modern-hamburger-btn.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.modern-hamburger-btn.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.modern-hamburger-btn.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Modern Mobile Menu */
+.modern-mobile-menu {
+  display: none;
+  margin-top: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+.dark .modern-mobile-menu {
+  background: rgba(23, 23, 23, 0.95);
+  border: 1px solid rgba(55, 65, 81, 0.8);
+}
+
+.mobile-nav-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modern-mobile-menu.show {
+  display: block;
+  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modern Navigation Items */
+.modern-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
   text-decoration: none;
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.dark .modern-nav-item {
+  color: #9ca3af;
+}
+
+/* Navigation Item Icon */
+.nav-item-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 2;
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.nav-item-icon i {
+  font-size: 16px;
+  transition: all 0.3s ease;
+  line-height: 1;
+  width: 16px;
+  text-align: center;
+}
+
+/* Ensure consistent icon sizing for all navigation items */
+.modern-nav-item .nav-item-icon i {
+  font-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Navigation Item Text */
+.nav-item-text {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  flex: 1;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Navigation Item Indicator */
+.nav-item-indicator {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8px;
+  transform: translateY(-50%);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+/* Hover Effects */
+.modern-nav-item:hover {
+  color: #4f46e5;
+  background: rgba(99, 102, 241, 0.08);
+  transform: translateX(4px);
+}
+
+.dark .modern-nav-item:hover {
+  color: #818cf8;
+  background: rgba(129, 140, 248, 0.1);
+}
+
+.modern-nav-item:hover .nav-item-icon {
+  transform: scale(1.1);
+  color: #4f46e5;
+}
+
+.dark .modern-nav-item:hover .nav-item-icon {
+  color: #818cf8;
+}
+
+.modern-nav-item:hover .nav-item-indicator {
+  width: 4px;
+  height: 24px;
+  left: 4px;
+}
+
+/* Active State */
+.modern-nav-item.active {
+  color: #4f46e5;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(147, 51, 234, 0.1) 100%
+  );
+  font-weight: 600;
+}
+
+.dark .modern-nav-item.active {
+  color: #818cf8;
+  background: linear-gradient(
+    135deg,
+    rgba(129, 140, 248, 0.15) 0%,
+    rgba(196, 181, 253, 0.15) 100%
+  );
+}
+
+.modern-nav-item.active .nav-item-icon {
+  color: #4f46e5;
+  transform: scale(1.1);
+}
+
+.dark .modern-nav-item.active .nav-item-icon {
+  color: #818cf8;
+}
+
+.modern-nav-item.active .nav-item-indicator {
+  width: 4px;
+  height: 24px;
+  left: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 0 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Desktop Navigation Container */
+.desktop-nav-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 0;
+}
+
+/* Modern Navigation Divider */
+.modern-nav-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #e5e7eb 50%,
+    transparent 100%
+  );
+  margin: 16px 0;
+}
+
+.dark .modern-nav-divider {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #374151 50%,
+    transparent 100%
+  );
+}
+
+/* Mobile Specific Styles */
+.mobile-nav-item {
+  padding: 14px 16px;
+  border-radius: 10px;
+}
+
+.mobile-nav-item:hover {
+  transform: none;
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.mobile-nav-item:hover .nav-item-indicator {
+  width: 0;
+  height: 0;
+}
+
+/* Desktop Specific Styles */
+.desktop-nav-item {
+  border-radius: 12px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .modern-hamburger-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hamburger-line {
+    width: 16px;
+  }
+
+  .mobile-nav-item {
+    padding: 12px 14px;
+    font-size: 15px;
+  }
+
+  .nav-item-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .nav-item-icon i {
+    font-size: 15px;
+  }
 }
 
 /* Skill icon container */
@@ -809,6 +1095,17 @@ body {
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  min-height: 200px;
+}
+
+/* Specific heights for different cards */
+.bento-projects {
+  min-height: 400px;
+}
+
+.bento-about,
+.bento-skills {
+  min-height: 190px;
 }
 
 .bento-card:hover {
@@ -1315,6 +1612,347 @@ button:active {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ========== FEATURED SECTIONS INTERACTIVE STYLES ========== */
+
+/* 1. Projects Showcase - Horizontal Scrolling */
+.projects-preview-container {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.projects-preview-scroll {
+  display: flex;
+  gap: 8px;
+  height: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+}
+
+.projects-preview-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.projects-preview-scroll:active {
+  cursor: grabbing;
+}
+
+.project-preview-card {
+  flex: 0 0 100px;
+  height: 100%;
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  scroll-snap-align: center;
+  transition: transform 0.3s ease;
+}
+
+.project-preview-card:hover {
+  transform: scale(1.05);
+}
+
+.project-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-preview-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 8px 6px 4px;
+}
+
+.project-preview-title {
+  color: white;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.2;
+  display: block;
+}
+
+/* Large project preview cards for grid layout */
+.project-preview-card-large {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  aspect-ratio: 16/10;
+}
+
+.project-preview-card-large:hover {
+  transform: scale(1.02);
+}
+
+.project-preview-img-large {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-preview-overlay-large {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 12px 8px 6px;
+}
+
+.project-preview-title-large {
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
+  display: block;
+}
+
+/* 2. About Me - Photo Stack */
+.about-photo-stack-mini {
+  position: relative;
+  width: 60px;
+  height: 80px;
+  margin: 8px auto;
+}
+
+/* Compact photo stack for horizontal layout */
+.about-photo-stack-compact {
+  position: relative;
+  width: 50px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.photo-stack-compact-item {
+  position: absolute;
+  width: 45px;
+  height: 55px;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.photo-stack-compact-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-stack-mini-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.photo-stack-mini-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.photo-stack-mini-item:hover {
+  transform: scale(1.1) rotate(0deg) !important;
+  z-index: 10 !important;
+}
+
+.photo-stack-mini-item.clicked {
+  transform: scale(1.2) rotate(0deg) !important;
+  z-index: 20 !important;
+}
+
+.photo-stack-mini-item.moving-to-back {
+  transform: rotate(10deg) scale(0.9) !important;
+  z-index: 0 !important;
+  opacity: 0;
+}
+
+/* 3. Skills Preview - Slide Animation */
+.skills-preview-container {
+  width: 100%;
+  height: 40px;
+  overflow: hidden;
+}
+
+.skills-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 4px;
+  height: 100%;
+}
+
+.skill-preview-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: skillSlideIn 0.5s ease forwards;
+}
+
+.skill-preview-item:nth-child(even) {
+  transform: translateX(20px);
+}
+
+/* Skills compact layout for horizontal cards */
+.skills-preview-compact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-icon-compact {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: skillFadeInUp 0.5s ease forwards;
+}
+
+.skill-more {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+@keyframes skillFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes skillSlideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Bento Card Hover Effects */
+.bento-projects:hover .projects-preview-scroll {
+  animation: projectsAutoScroll 3s ease-in-out infinite;
+}
+
+.bento-about:hover .photo-stack-mini-item:first-child {
+  transform: scale(1.1) rotate(0deg) !important;
+}
+
+.bento-skills:hover .skill-preview-item {
+  animation: skillPulse 2s ease-in-out infinite;
+}
+
+@keyframes projectsAutoScroll {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-30px);
+  }
+}
+
+@keyframes skillPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .projects-preview-container {
+    height: 100px;
+  }
+
+  .project-preview-card {
+    flex: 0 0 80px;
+  }
+
+  .about-photo-stack-mini {
+    width: 50px;
+    height: 65px;
+  }
+
+  .skills-preview-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .skill-preview-item {
+    font-size: 10px;
+  }
+}
+
+/* Enhanced Interactive States */
+.bento-card {
+  overflow: hidden;
+  position: relative;
+}
+
+.bento-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bento-card:hover::before {
+  opacity: 1;
+}
+
+.bento-card > div {
+  position: relative;
+  z-index: 2;
 }
 
 .fade-in-up {

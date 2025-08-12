@@ -132,6 +132,7 @@ const bentoItems = [
     descKey: "bento_projects_desc",
     icon: "fas fa-folder",
     colSpan: 2,
+    rowSpan: 2,
     className: "bento-projects",
     href: "#projects",
   },
@@ -140,6 +141,7 @@ const bentoItems = [
     descKey: "bento_about_desc",
     icon: "fas fa-user",
     colSpan: 1,
+    rowSpan: 1,
     className: "bento-about",
     href: "#about",
   },
@@ -148,49 +150,73 @@ const bentoItems = [
     descKey: "bento_skills_desc",
     icon: "fas fa-cogs",
     colSpan: 1,
+    rowSpan: 1,
     className: "bento-skills",
     href: "#home",
-  },
-  {
-    titleKey: "bento_achievements_title",
-    descKey: "bento_achievements_desc",
-    icon: "fas fa-certificate",
-    colSpan: 1,
-    className: "bento-achievements",
-    href: "#achievements",
-  },
-  {
-    titleKey: "bento_contact_title",
-    descKey: "bento_contact_desc",
-    icon: "fas fa-envelope",
-    colSpan: 1,
-    className: "bento-contact",
-    href: "#contact",
   },
 ];
 
 // Project data
 const projects = [
-  //   {
-  //     title: "E-Commerce Platform",
-  //     description:
-  //       "A full-stack e-commerce solution built with React, Node.js, and MongoDB.",
-  //     image: "https://via.placeholder.com/400x250?text=E-Commerce+Platform",
-  //     technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-  //     github: "https://github.com/AlexanderPhan04/EsportsManager",
-  //     demo: "https://github.com/AlexanderPhan04/EsportsManager",
-  //   },
+  {
+    title: "E-Commerce Platform",
+    description:
+      "A full-stack e-commerce solution built with React, Node.js, and MongoDB.",
+    image: "/imagesAboutMe/esportManagerProject.png",
+    technologies: ["C#"],
+    github: "https://github.com/AlexanderPhan04/EsportsManager",
+    demo: "https://github.com/AlexanderPhan04/EsportsManager",
+  },
+  {
+    title: "Portfolio Website",
+    description:
+      "A responsive personal portfolio showcasing projects and skills.",
+    image: "/imagesAboutMe/portfolioProject.png",
+    technologies: ["HTML", "CSS", "JavaScript", "Tailwind"],
+    github: "https://github.com/AlexanderPhan04/AlexanderPhan04.github.io",
+    demo: "https://alexanderphan04.github.io",
+  },
+  {
+    title: "Task Management App",
+    description:
+      "A collaborative task management application with real-time updates.",
+    image: "https://via.placeholder.com/400x250?text=Task+Manager",
+    technologies: ["Vue.js", "Firebase", "Vuetify", "PWA"],
+    github: "https://github.com/AlexanderPhan04/task-manager",
+    demo: "#",
+  },
+  {
+    title: "Weather Dashboard",
+    description:
+      "A weather application with location-based forecasts and analytics.",
+    image: "https://via.placeholder.com/400x250?text=Weather+Dashboard",
+    technologies: ["JavaScript", "Chart.js", "OpenWeather API", "CSS"],
+    github: "https://github.com/AlexanderPhan04/weather-app",
+    demo: "#",
+  },
+];
+
+// About Me photos data
+const aboutPhotos = [
+  {
+    src: "images/PhanQuan.jpg",
+    alt: "Alexander Phan - Professional photo",
+  },
+  {
+    src: "/imagesAboutMe/esportManagerTeamProject.png",
+    alt: "Alexander Phan - Casual photo",
+  },
 ];
 
 // Achievement data
 const achievements = [
-  //   {
-  //     title: "Frontend Development Certificate",
-  //     issuer: "FreeCodeCamp",
-  //     date: "2023",
-  //     image: "/AlexanderPhan.github.io/images/PhanQuan.jpg",
-  //     link: "#",
-  //   },
+  {
+    title: "Frontend Development Certificate",
+    issuer: "FreeCodeCamp",
+    date: "2023",
+    image: "/AlexanderPhan.github.io/images/PhanQuan.jpg",
+    link: "#",
+  },
 ];
 
 // Current language
@@ -224,7 +250,6 @@ function initializeElements() {
     langToggleMobile: document.getElementById("lang-toggle-mobile"),
     mobileMenuToggle: document.getElementById("mobile-menu-toggle"),
     mobileMenu: document.getElementById("mobile-menu"),
-    menuIcon: document.getElementById("menu-icon"),
     loading: document.getElementById("loading"),
   };
 }
@@ -313,40 +338,171 @@ function renderBentoGrid() {
 
   bentoContainer.innerHTML = "";
 
+  // Define interactive cards that should not have navigation
+  const interactiveCards = ["bento-projects", "bento-about", "bento-skills"];
+
   bentoItems.forEach((item) => {
     const bentoCard = document.createElement("div");
-    bentoCard.className = `bento-card ${item.className} cursor-pointer transition-all hover:scale-105`;
+    const cursorClass = interactiveCards.includes(item.className)
+      ? ""
+      : "cursor-pointer";
+    bentoCard.className =
+      `bento-card ${item.className} ${cursorClass} transition-all hover:scale-105`.trim();
     bentoCard.style.gridColumn = `span ${item.colSpan}`;
+    bentoCard.style.gridRow = `span ${item.rowSpan}`;
 
     const currentTranslations =
       translations[currentLanguage] || translations.en;
 
-    bentoCard.innerHTML = `
-            <div class="flex flex-col ${
-              item.colSpan === 2 ? "items-start" : "items-center text-center"
-            }">
-                <div class="bg-white bg-opacity-20 rounded-lg w-fit p-3">
-                    <i class="${item.icon} text-neutral-800"></i>
-                </div>
-                <h3 class="mb-1 mt-3 text-sm font-medium text-white">${
-                  currentTranslations[item.titleKey]
-                }</h3>
-                <p class="text-xs text-white text-opacity-80">${
-                  currentTranslations[item.descKey]
-                }</p>
-            </div>
-        `;
+    // Create different content based on card type
+    let cardContent = "";
 
-    bentoCard.addEventListener("click", () => {
-      if (item.href.startsWith("#")) {
-        navigateToSection(item.href.substring(1));
-      } else {
-        window.open(item.href, "_blank");
-      }
-    });
+    if (item.className === "bento-projects") {
+      // Projects showcase with horizontal scrolling - enhanced version
+      cardContent = `
+        <div class="flex flex-col h-full">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="bg-white bg-opacity-20 rounded-lg w-fit p-3">
+              <i class="${item.icon} text-white text-lg"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-white">${
+                currentTranslations[item.titleKey]
+              }</h3>
+              <p class="text-sm text-white text-opacity-80">${
+                currentTranslations[item.descKey]
+              }</p>
+            </div>
+          </div>
+          
+          <div class="projects-preview-container flex-1">
+            <div class="grid grid-cols-2 gap-3">
+              ${projects
+                .slice(0, 4)
+                .map(
+                  (project, index) => `
+                <div class="project-preview-card-large ${
+                  index >= 2 ? "hidden md:block" : ""
+                }">
+                  <img src="${project.image}" alt="${
+                    project.title
+                  }" class="project-preview-img-large">
+                  <div class="project-preview-overlay-large">
+                    <span class="project-preview-title-large">${
+                      project.title
+                    }</span>
+                  </div>
+                </div>
+              `
+                )
+                .join("")}
+            </div>
+          </div>
+        </div>
+      `;
+    } else if (item.className === "bento-about") {
+      // About me with photo stack - compact version
+      cardContent = `
+        <div class="flex items-center gap-4 h-full">
+          <div class="bg-white bg-opacity-20 rounded-lg p-3 flex-shrink-0">
+            <i class="${item.icon} text-white text-lg"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-lg font-semibold text-white mb-1">${
+              currentTranslations[item.titleKey]
+            }</h3>
+            <p class="text-sm text-white text-opacity-80">${
+              currentTranslations[item.descKey]
+            }</p>
+          </div>
+          <div class="about-photo-stack-compact" id="bento-photo-stack">
+            ${aboutPhotos
+              .slice(0, 2)
+              .map(
+                (photo, index) => `
+              <div class="photo-stack-compact-item" style="transform: rotate(${
+                (index - 0.5) * 8
+              }deg) translateX(${index * 4}px); z-index: ${2 - index};">
+                <img src="${photo.src}" alt="${photo.alt}">
+              </div>
+            `
+              )
+              .join("")}
+          </div>
+        </div>
+      `;
+    } else if (item.className === "bento-skills") {
+      // Skills with technology icons - compact version
+      cardContent = `
+        <div class="flex items-center gap-4 h-full">
+          <div class="bg-white bg-opacity-20 rounded-lg p-3 flex-shrink-0">
+            <i class="${item.icon} text-white text-lg"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-lg font-semibold text-white mb-1">${
+              currentTranslations[item.titleKey]
+            }</h3>
+            <p class="text-sm text-white text-opacity-80 mb-3">${
+              currentTranslations[item.descKey]
+            }</p>
+            <div class="skills-preview-compact">
+              ${skills
+                .slice(0, 5)
+                .map(
+                  (skill, index) => `
+                <div class="skill-icon-compact" style="animation-delay: ${
+                  index * 0.1
+                }s;">
+                  <i class="${skill.icon}" style="color: ${skill.color};"></i>
+                </div>
+              `
+                )
+                .join("")}
+              <div class="skill-more">+${skills.length - 5}</div>
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      // Default card content for other items
+      cardContent = `
+        <div class="flex flex-col ${
+          item.colSpan === 2 ? "items-start" : "items-center text-center"
+        }">
+          <div class="bg-white bg-opacity-20 rounded-lg w-fit p-3">
+            <i class="${item.icon} text-neutral-800"></i>
+          </div>
+          <h3 class="mb-1 mt-3 text-sm font-medium text-white">${
+            currentTranslations[item.titleKey]
+          }</h3>
+          <p class="text-xs text-white text-opacity-80">${
+            currentTranslations[item.descKey]
+          }</p>
+        </div>
+      `;
+    }
+
+    bentoCard.innerHTML = cardContent;
+
+    // Only add navigation for non-interactive cards (achievements, contact)
+    // Remove navigation for interactive cards (projects, about, skills)
+    if (!interactiveCards.includes(item.className)) {
+      bentoCard.addEventListener("click", () => {
+        if (item.href.startsWith("#")) {
+          navigateToSection(item.href.substring(1));
+        } else {
+          window.open(item.href, "_blank");
+        }
+      });
+    }
 
     bentoContainer.appendChild(bentoCard);
   });
+
+  // Initialize interactive features after rendering
+  setTimeout(() => {
+    initializeBentoInteractions();
+  }, 100);
 }
 
 // Render projects
@@ -470,9 +626,40 @@ function initializeEventListeners() {
       const href = item.getAttribute("href");
       if (href.startsWith("#")) {
         navigateToSection(href.substring(1));
+        updateActiveNavigation(href.substring(1));
         toggleMobileMenu(); // Close mobile menu after navigation
       }
     });
+  });
+
+  // Desktop menu items
+  const desktopMenuItems = document.querySelectorAll(".desktop-nav-item");
+  desktopMenuItems.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      const href = item.getAttribute("href");
+      if (href.startsWith("#")) {
+        navigateToSection(href.substring(1));
+        updateActiveNavigation(href.substring(1));
+      }
+    });
+  });
+}
+
+// Update active navigation state
+function updateActiveNavigation(activeSection) {
+  // Remove active class from all navigation items
+  const allNavItems = document.querySelectorAll(".modern-nav-item");
+  allNavItems.forEach((item) => {
+    item.classList.remove("active");
+  });
+
+  // Add active class to current section
+  const activeNavItems = document.querySelectorAll(
+    `[data-section="${activeSection}"]`
+  );
+  activeNavItems.forEach((item) => {
+    item.classList.add("active");
   });
 }
 
@@ -493,10 +680,22 @@ function toggleLanguage() {
 
 // Toggle mobile menu
 function toggleMobileMenu() {
-  if (elements.mobileMenu && elements.menuIcon) {
-    elements.mobileMenu.classList.toggle("hidden");
-    const isOpen = !elements.mobileMenu.classList.contains("hidden");
-    elements.menuIcon.className = isOpen ? "fas fa-times" : "fas fa-bars";
+  if (elements.mobileMenu) {
+    const isCurrentlyHidden =
+      elements.mobileMenu.style.display === "none" ||
+      !elements.mobileMenu.classList.contains("show");
+
+    if (isCurrentlyHidden) {
+      elements.mobileMenu.style.display = "block";
+      elements.mobileMenu.classList.add("show");
+      elements.mobileMenuToggle.classList.add("active");
+    } else {
+      elements.mobileMenu.classList.remove("show");
+      elements.mobileMenuToggle.classList.remove("active");
+      setTimeout(() => {
+        elements.mobileMenu.style.display = "none";
+      }, 300);
+    }
   }
 }
 
@@ -727,3 +926,209 @@ function hideTooltip() {
 // Export functions for global access
 window.navigateToHome = navigateToHome;
 window.navigateToSection = navigateToSection;
+
+// ========== FEATURED SECTIONS INTERACTIVE FUNCTIONS ==========
+
+// Initialize all bento interactions
+function initializeBentoInteractions() {
+  initializeProjectsPreview();
+  initializePhotoStack();
+  initializeSkillsAnimation();
+}
+
+// 1. Projects Preview - Horizontal Scrolling with Drag
+function initializeProjectsPreview() {
+  const container = document.getElementById("bento-projects-scroll");
+  if (!container) return;
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  // Mouse events for drag scrolling
+  container.addEventListener("mousedown", (e) => {
+    isDown = true;
+    container.style.cursor = "grabbing";
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+    e.preventDefault();
+  });
+
+  container.addEventListener("mouseleave", () => {
+    isDown = false;
+    container.style.cursor = "grab";
+  });
+
+  container.addEventListener("mouseup", () => {
+    isDown = false;
+    container.style.cursor = "grab";
+  });
+
+  container.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 2;
+    container.scrollLeft = scrollLeft - walk;
+  });
+
+  // Touch events for mobile
+  let touchStartX = 0;
+  let touchScrollLeft = 0;
+
+  container.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchScrollLeft = container.scrollLeft;
+  });
+
+  container.addEventListener("touchmove", (e) => {
+    if (!touchStartX) return;
+    const touchX = e.touches[0].clientX;
+    const walk = (touchStartX - touchX) * 1.5;
+    container.scrollLeft = touchScrollLeft + walk;
+    e.preventDefault();
+  });
+
+  container.addEventListener("touchend", () => {
+    touchStartX = 0;
+  });
+
+  // Auto-scroll on hover (for demo purposes)
+  const bentoProjectsCard = document.querySelector(".bento-projects");
+  if (bentoProjectsCard) {
+    let autoScrollInterval;
+
+    bentoProjectsCard.addEventListener("mouseenter", () => {
+      autoScrollInterval = setInterval(() => {
+        if (
+          container.scrollLeft >=
+          container.scrollWidth - container.clientWidth
+        ) {
+          container.scrollLeft = 0;
+        } else {
+          container.scrollLeft += 1;
+        }
+      }, 30);
+    });
+
+    bentoProjectsCard.addEventListener("mouseleave", () => {
+      clearInterval(autoScrollInterval);
+    });
+  }
+}
+
+// 2. Photo Stack Animation in About Card
+function initializePhotoStack() {
+  const photoStack = document.getElementById("bento-photo-stack");
+  if (!photoStack) return;
+
+  const photos = Array.from(photoStack.children);
+  let currentIndex = 0;
+
+  photoStack.addEventListener("click", (e) => {
+    e.stopPropagation(); // Prevent bento card click
+    animatePhotoStack();
+  });
+
+  function animatePhotoStack() {
+    const topPhoto = photos[currentIndex];
+
+    // Add clicked animation
+    topPhoto.classList.add("clicked");
+
+    setTimeout(() => {
+      // Move to back animation
+      topPhoto.classList.remove("clicked");
+      topPhoto.classList.add("moving-to-back");
+
+      setTimeout(() => {
+        // Reset and move to back in DOM
+        topPhoto.classList.remove("moving-to-back");
+        photoStack.appendChild(topPhoto);
+
+        // Update photos array order
+        photos.push(photos.shift());
+
+        // Reapply z-index and transforms
+        photos.forEach((photo, index) => {
+          photo.style.zIndex = photos.length - index;
+          photo.style.transform = `rotate(${(index - 1) * 5}deg) translateY(${
+            index * 2
+          }px)`;
+        });
+
+        currentIndex = 0;
+      }, 300);
+    }, 400);
+  }
+}
+
+// 3. Skills Animation - Slide in from sides
+function initializeSkillsAnimation() {
+  const skillsContainer = document.getElementById("bento-skills-preview");
+  if (!skillsContainer) return;
+
+  // Create intersection observer for the bento skills card
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const skills = entry.target.querySelectorAll(".skill-preview-item");
+          skills.forEach((skill, index) => {
+            skill.style.animationDelay = `${index * 0.1}s`;
+            skill.classList.add("animate");
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.5,
+      rootMargin: "0px 0px -10px 0px",
+    }
+  );
+
+  const bentoSkillsCard = document.querySelector(".bento-skills");
+  if (bentoSkillsCard) {
+    observer.observe(bentoSkillsCard);
+  }
+
+  // Add hover effect to restart animation
+  if (bentoSkillsCard) {
+    bentoSkillsCard.addEventListener("mouseenter", () => {
+      const skills = skillsContainer.querySelectorAll(".skill-preview-item");
+      skills.forEach((skill, index) => {
+        skill.style.animation = "none";
+        skill.offsetHeight; // Trigger reflow
+        skill.style.animation = `skillSlideIn 0.3s ease forwards`;
+        skill.style.animationDelay = `${index * 0.05}s`;
+      });
+    });
+  }
+}
+
+// Enhanced scroll snap for projects
+function snapToProject(container) {
+  const cardWidth = 108; // 100px + 8px gap
+  const scrollLeft = container.scrollLeft;
+  const snapIndex = Math.round(scrollLeft / cardWidth);
+  const snapPosition = snapIndex * cardWidth;
+
+  container.scrollTo({
+    left: snapPosition,
+    behavior: "smooth",
+  });
+}
+
+// Debounce function for performance
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
