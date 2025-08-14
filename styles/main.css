@@ -809,22 +809,30 @@ body {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(229, 231, 235, 0.8);
+  position: relative;
+  z-index: 30;
 }
 
 .dark .modern-mobile-menu {
   background: rgba(23, 23, 23, 0.95);
   border: 1px solid rgba(55, 65, 81, 0.8);
+  position: relative;
+  z-index: 30;
 }
 
 .mobile-nav-container {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
 }
 
 .modern-mobile-menu.show {
   display: block;
   animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 30;
 }
 
 @keyframes slideDown {
@@ -1123,20 +1131,389 @@ body {
 }
 
 /* Bento card gradients */
+/* Light mode - soft, subtle gradients */
 .bento-projects {
-  background: linear-gradient(135deg, #ec4899, #f43f5e);
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
 }
 .bento-about {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
 }
 .bento-skills {
-  background: linear-gradient(135deg, #34d399, #10b981);
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
 }
 .bento-achievements {
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
 }
 .bento-contact {
-  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+}
+
+/* Dark mode - subtle dark gradients like in the image */
+.dark .bento-projects {
+  background: linear-gradient(135deg, #374151, #4b5563);
+}
+.dark .bento-about {
+  background: linear-gradient(135deg, #374151, #4b5563);
+}
+.dark .bento-skills {
+  background: linear-gradient(135deg, #374151, #4b5563);
+}
+.dark .bento-achievements {
+  background: linear-gradient(135deg, #374151, #4b5563);
+}
+.dark .bento-contact {
+  background: linear-gradient(135deg, #374151, #4b5563);
+}
+
+/* Light mode text and icon colors for bento cards */
+.bento-card h3,
+.bento-card p,
+.bento-card i {
+  color: #1f2937 !important;
+}
+
+.bento-card .bg-white {
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+.bento-card .card-icon-container {
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+.bento-card .project-vertical-title {
+  color: #1f2937 !important;
+}
+
+.bento-card .project-vertical-desc {
+  color: #4b5563 !important;
+}
+
+/* Dark mode - keep white text */
+.dark .bento-card h3,
+.dark .bento-card p,
+.dark .bento-card i {
+  color: white !important;
+}
+
+.dark .bento-card .bg-white {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .bento-card .card-icon-container {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .bento-card .project-vertical-title {
+  color: white !important;
+}
+
+.dark .bento-card .project-vertical-desc {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* ===== ENHANCED BENTO EFFECTS ===== */
+
+/* 1. Light Effect (Torch/Firefly) */
+.light-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: 1rem;
+}
+
+/* 2. Icon Navigation Styles */
+.card-icon-container {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.card-icon-container:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.card-icon-container::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-icon-container:hover::after {
+  opacity: 1;
+}
+
+/* 3. Projects Stack Layout */
+.projects-stack-container {
+  padding: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.projects-stack-list {
+  position: relative;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-stack-item {
+  position: relative;
+  width: 100%;
+  height: 55px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.project-stack-item:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.project-stack-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.project-stack-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.3) 60%,
+    transparent 100%
+  );
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+}
+
+.project-stack-content {
+  flex: 1;
+}
+
+.project-stack-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.project-stack-desc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Dark mode project stack */
+.dark .project-stack-item {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .project-stack-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 60%,
+    transparent 100%
+  );
+}
+
+/* 4. Interactive Photo Stack */
+.about-photo-stack-interactive {
+  position: relative;
+  width: 68px;
+  height: 76px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.photo-stack-interactive-item {
+  position: absolute;
+  width: 58px;
+  height: 72px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.photo-stack-interactive-item:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  z-index: 10 !important;
+}
+
+/* Dark mode photo stack */
+.dark .photo-stack-interactive-item {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.dark .photo-stack-interactive-item:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.photo-stack-interactive-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 5. Skills Marquee */
+.skills-marquee-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 76px;
+  overflow: hidden;
+  padding: 8px 4px 12px 4px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.skills-marquee-row {
+  display: flex;
+  height: 32px;
+  overflow: hidden;
+}
+
+.skills-marquee-track {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  justify-content: center;
+}
+
+.skills-marquee-rtl .skills-marquee-track {
+  animation-name: marqueeRTL;
+}
+
+.skills-marquee-ltr .skills-marquee-track {
+  animation-name: marqueeLTR;
+}
+
+.skill-marquee-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-marquee-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Dark mode skills marquee */
+.dark .skill-marquee-item {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .skill-marquee-item:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Marquee animations */
+@keyframes marqueeRTL {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marqueeLTR {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Skill tooltip */
+.skill-tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.skill-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Form styles */
@@ -1964,6 +2341,34 @@ button:active {
   cursor: pointer;
 }
 
+/* Text truncation utilities */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Min-width utility */
+.min-w-0 {
+  min-width: 0;
+}
+
 /* Custom gradient backgrounds */
 .gradient-bg {
   background: linear-gradient(
@@ -2196,4 +2601,93 @@ button:active {
 .mobile-switches-container,
 .mobile-switches-container * {
   transition: all 0.3s ease;
+}
+
+/* Enhanced Bento Grid Layout */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 640px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .bento-projects {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .bento-about {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .bento-skills {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 639px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-projects,
+  .bento-about,
+  .bento-skills {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  /* Mobile About Me adjustments */
+  .about-photo-stack-interactive {
+    width: 58px !important;
+    height: 66px !important;
+    margin-right: 6px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .photo-stack-interactive-item {
+    width: 50px !important;
+    height: 62px !important;
+  }
+
+  /* Mobile Skills adjustments */
+  .skills-marquee-container {
+    height: 66px !important;
+    gap: 6px !important;
+    padding: 6px 2px 8px 2px !important;
+    margin-top: 12px !important;
+  }
+
+  .skills-marquee-row {
+    height: 28px !important;
+  }
+
+  .skill-marquee-item {
+    width: 34px !important;
+    height: 28px !important;
+    font-size: 14px !important;
+  }
+
+  .skills-marquee-track {
+    gap: 8px !important;
+  }
+
+  /* Bento card mobile padding */
+  .bento-card {
+    padding: 1rem;
+    min-height: 160px;
+  }
 }

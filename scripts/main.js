@@ -131,8 +131,8 @@ const bentoItems = [
     titleKey: "bento_projects_title",
     descKey: "bento_projects_desc",
     icon: "fas fa-folder",
-    colSpan: 2,
-    rowSpan: 2,
+    colSpan: 1, // Will be handled by CSS classes
+    rowSpan: 1,
     className: "bento-projects",
     href: "#projects",
   },
@@ -180,7 +180,7 @@ const projects = [
     title: "Task Management App",
     description:
       "A collaborative task management application with real-time updates.",
-    image: "https://via.placeholder.com/400x250?text=Task+Manager",
+    image: "images/PhanQuan.jpg",
     technologies: ["Vue.js", "Firebase", "Vuetify", "PWA"],
     github: "https://github.com/AlexanderPhan04/task-manager",
     demo: "#",
@@ -189,7 +189,7 @@ const projects = [
     title: "Weather Dashboard",
     description:
       "A weather application with location-based forecasts and analytics.",
-    image: "https://via.placeholder.com/400x250?text=Weather+Dashboard",
+    image: "images/PhanQuan.jpg",
     technologies: ["JavaScript", "Chart.js", "OpenWeather API", "CSS"],
     github: "https://github.com/AlexanderPhan04/weather-app",
     demo: "#",
@@ -214,7 +214,7 @@ const achievements = [
     title: "Frontend Development Certificate",
     issuer: "FreeCodeCamp",
     date: "2023",
-    image: "/AlexanderPhan.github.io/images/PhanQuan.jpg",
+    image: "images/PhanQuan.jpg",
     link: "#",
   },
 ];
@@ -358,11 +358,11 @@ function renderBentoGrid() {
     let cardContent = "";
 
     if (item.className === "bento-projects") {
-      // Projects showcase with horizontal scrolling - enhanced version
+      // Projects showcase with vertical scrolling list
       cardContent = `
         <div class="flex flex-col h-full">
           <div class="flex items-center gap-3 mb-4">
-            <div class="bg-white bg-opacity-20 rounded-lg w-fit p-3">
+            <div class="card-icon-container bg-white bg-opacity-20 rounded-lg w-fit p-3 cursor-pointer" data-section="projects">
               <i class="${item.icon} text-white text-lg"></i>
             </div>
             <div>
@@ -375,22 +375,24 @@ function renderBentoGrid() {
             </div>
           </div>
           
-          <div class="projects-preview-container flex-1">
-            <div class="grid grid-cols-2 gap-3">
+          <div class="projects-stack-container flex-1">
+            <div class="projects-stack-list">
               ${projects
-                .slice(0, 4)
+                .slice(0, 3)
                 .map(
                   (project, index) => `
-                <div class="project-preview-card-large ${
-                  index >= 2 ? "hidden md:block" : ""
-                }">
+                <div class="project-stack-item" style="z-index: ${3 - index};">
                   <img src="${project.image}" alt="${
                     project.title
-                  }" class="project-preview-img-large">
-                  <div class="project-preview-overlay-large">
-                    <span class="project-preview-title-large">${
-                      project.title
-                    }</span>
+                  }" class="project-stack-img">
+                  <div class="project-stack-overlay">
+                    <div class="project-stack-content">
+                      <h4 class="project-stack-title">${project.title}</h4>
+                      <p class="project-stack-desc">${project.description.substring(
+                        0,
+                        60
+                      )}...</p>
+                    </div>
                   </div>
                 </div>
               `
@@ -401,28 +403,30 @@ function renderBentoGrid() {
         </div>
       `;
     } else if (item.className === "bento-about") {
-      // About me with photo stack - compact version
+      // About me with clickable photo stack
       cardContent = `
-        <div class="flex items-center gap-4 h-full">
-          <div class="bg-white bg-opacity-20 rounded-lg p-3 flex-shrink-0">
-            <i class="${item.icon} text-white text-lg"></i>
+        <div class="flex items-center justify-between h-full p-4">
+          <div class="flex items-center gap-3 flex-1 min-w-0 pr-3">
+            <div class="card-icon-container bg-white bg-opacity-20 rounded-lg p-3 flex-shrink-0 cursor-pointer" data-section="about">
+              <i class="${item.icon} text-white text-lg"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-lg font-semibold text-white mb-1 truncate">${
+                currentTranslations[item.titleKey]
+              }</h3>
+              <p class="text-sm text-white text-opacity-80 line-clamp-2">${
+                currentTranslations[item.descKey]
+              }</p>
+            </div>
           </div>
-          <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">${
-              currentTranslations[item.titleKey]
-            }</h3>
-            <p class="text-sm text-white text-opacity-80">${
-              currentTranslations[item.descKey]
-            }</p>
-          </div>
-          <div class="about-photo-stack-compact" id="bento-photo-stack">
+          <div class="about-photo-stack-interactive flex-shrink-0" id="bento-photo-stack">
             ${aboutPhotos
-              .slice(0, 2)
+              .slice(0, 3)
               .map(
                 (photo, index) => `
-              <div class="photo-stack-compact-item" style="transform: rotate(${
-                (index - 0.5) * 8
-              }deg) translateX(${index * 4}px); z-index: ${2 - index};">
+              <div class="photo-stack-interactive-item" data-photo-index="${index}" style="transform: rotate(${
+                  (index - 1) * 4
+                }deg) translateX(${index * 2}px); z-index: ${3 - index};">
                 <img src="${photo.src}" alt="${photo.alt}">
               </div>
             `
@@ -432,33 +436,56 @@ function renderBentoGrid() {
         </div>
       `;
     } else if (item.className === "bento-skills") {
-      // Skills with technology icons - compact version
+      // Skills with scrolling marquee effect
       cardContent = `
-        <div class="flex items-center gap-4 h-full">
-          <div class="bg-white bg-opacity-20 rounded-lg p-3 flex-shrink-0">
-            <i class="${item.icon} text-white text-lg"></i>
+        <div class="flex flex-col h-full p-3">
+          <div class="flex items-center gap-3 mb-2 flex-shrink-0">
+            <div class="card-icon-container bg-white bg-opacity-20 rounded-lg p-3 flex-shrink-0 cursor-pointer" data-section="home">
+              <i class="${item.icon} text-white text-lg"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-lg font-semibold text-white mb-1 truncate">${
+                currentTranslations[item.titleKey]
+              }</h3>
+              <p class="text-sm text-white text-opacity-80 line-clamp-1">${
+                currentTranslations[item.descKey]
+              }</p>
+            </div>
           </div>
-          <div class="flex-1">
-            <h3 class="text-lg font-semibold text-white mb-1">${
-              currentTranslations[item.titleKey]
-            }</h3>
-            <p class="text-sm text-white text-opacity-80 mb-3">${
-              currentTranslations[item.descKey]
-            }</p>
-            <div class="skills-preview-compact">
-              ${skills
-                .slice(0, 5)
-                .map(
-                  (skill, index) => `
-                <div class="skill-icon-compact" style="animation-delay: ${
-                  index * 0.1
-                }s;">
-                  <i class="${skill.icon}" style="color: ${skill.color};"></i>
-                </div>
-              `
-                )
-                .join("")}
-              <div class="skill-more">+${skills.length - 5}</div>
+          
+          <div class="skills-marquee-container flex-1">
+            <!-- Top row: right to left -->
+            <div class="skills-marquee-row skills-marquee-rtl">
+              <div class="skills-marquee-track">
+                ${skills
+                  .slice(0, Math.ceil(skills.length / 2))
+                  .concat(skills.slice(0, Math.ceil(skills.length / 2)))
+                  .map(
+                    (skill) => `
+                  <div class="skill-marquee-item" data-skill="${skill.name}">
+                    <i class="${skill.icon}" style="color: ${skill.color};"></i>
+                  </div>
+                `
+                  )
+                  .join("")}
+              </div>
+            </div>
+            
+            <!-- Bottom row: left to right -->
+            <div class="skills-marquee-row skills-marquee-ltr">
+              <div class="skills-marquee-track">
+                ${skills
+                  .slice(Math.ceil(skills.length / 2))
+                  .concat(skills.slice(Math.ceil(skills.length / 2)))
+                  .map(
+                    (skill) => `
+                  <div class="skill-marquee-item" data-skill="${skill.name}">
+                    <i class="${skill.icon}" style="color: ${skill.color};"></i>
+                  </div>
+                `
+                  )
+                  .join("")}
+              </div>
             </div>
           </div>
         </div>
@@ -502,6 +529,7 @@ function renderBentoGrid() {
   // Initialize interactive features after rendering
   setTimeout(() => {
     initializeBentoInteractions();
+    initializeEnhancedBentoEffects();
   }, 100);
 }
 
@@ -1131,4 +1159,206 @@ function debounce(func, wait) {
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
   };
+}
+
+// Enhanced Bento Effects
+function initializeEnhancedBentoEffects() {
+  // 1. Light effect on hover for all bento cards
+  initializeLightEffect();
+
+  // 2. Icon navigation
+  initializeIconNavigation();
+
+  // 3. Projects stack interaction
+  initializeProjectsStackInteraction();
+
+  // 4. Photo stack interaction
+  initializePhotoStackInteraction();
+
+  // 5. Skills marquee effects
+  initializeSkillsMarquee();
+}
+
+// 1. Light effect (torch/firefly) on hover
+function initializeLightEffect() {
+  const bentoCards = document.querySelectorAll(".bento-card");
+
+  bentoCards.forEach((card) => {
+    // Add light effect container
+    const lightEffect = document.createElement("div");
+    lightEffect.className = "light-effect";
+    card.appendChild(lightEffect);
+
+    card.addEventListener("mouseenter", (e) => {
+      lightEffect.style.opacity = "1";
+    });
+
+    card.addEventListener("mouseleave", (e) => {
+      lightEffect.style.opacity = "0";
+    });
+
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      lightEffect.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 30%, transparent 70%)`;
+    });
+  });
+}
+
+// 2. Icon navigation with pointer cursor
+function initializeIconNavigation() {
+  const iconContainers = document.querySelectorAll(".card-icon-container");
+
+  iconContainers.forEach((container) => {
+    container.addEventListener("click", () => {
+      const section = container.getAttribute("data-section");
+      navigateToSection(section);
+    });
+  });
+}
+
+// 3. Projects stack interaction
+function initializeProjectsStackInteraction() {
+  const projectsContainer = document.querySelector(".projects-stack-container");
+  if (!projectsContainer) return;
+
+  const projectItems = document.querySelectorAll(".project-stack-item");
+
+  projectItems.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      // Bring clicked project to front and animate others
+      projectItems.forEach((p, i) => {
+        if (i === index) {
+          // Selected project - bring to front
+          p.style.transform = "translateY(0px) scale(1.02)";
+          p.style.zIndex = "10";
+          p.style.opacity = "1";
+        } else {
+          // Other projects - move back
+          const offset = (i - index) * 8;
+          p.style.transform = `translateY(${Math.abs(offset)}px) scale(0.95)`;
+          p.style.zIndex = `${3 - Math.abs(i - index)}`;
+          p.style.opacity = "0.7";
+        }
+        p.style.transition = "all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+      });
+
+      // Reset after some time
+      setTimeout(() => {
+        projectItems.forEach((p, i) => {
+          p.style.transform = "translateY(0px) scale(1)";
+          p.style.zIndex = `${3 - i}`;
+          p.style.opacity = "1";
+          p.style.transition = "all 0.3s ease";
+        });
+      }, 3000);
+    });
+
+    // Hover effect
+    item.addEventListener("mouseenter", () => {
+      item.style.transform = "translateY(-2px) scale(1.01)";
+      item.style.transition = "all 0.2s ease";
+    });
+
+    item.addEventListener("mouseleave", () => {
+      item.style.transform = "translateY(0px) scale(1)";
+      item.style.transition = "all 0.2s ease";
+    });
+  });
+}
+
+// 4. Photo stack interaction
+function initializePhotoStackInteraction() {
+  const photoStack = document.getElementById("bento-photo-stack");
+  if (!photoStack) return;
+
+  const photos = photoStack.querySelectorAll(".photo-stack-interactive-item");
+
+  photos.forEach((photo, index) => {
+    photo.addEventListener("click", () => {
+      // Bring clicked photo to front
+      photos.forEach((p, i) => {
+        const zIndex = i === index ? 10 : 3 - i;
+        const rotation = i === index ? 0 : (i - 1) * 8;
+        const translateX = i === index ? 0 : i * 6;
+
+        p.style.transform = `rotate(${rotation}deg) translateX(${translateX}px) scale(${
+          i === index ? 1.05 : 1
+        })`;
+        p.style.zIndex = zIndex;
+        p.style.transition = "all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+      });
+
+      // Reset after animation
+      setTimeout(() => {
+        photos.forEach((p, i) => {
+          p.style.transform = `rotate(${(i - 1) * 8}deg) translateX(${
+            i * 6
+          }px)`;
+          p.style.zIndex = 3 - i;
+          p.style.transition = "all 0.3s ease";
+        });
+      }, 2000);
+    });
+  });
+}
+
+// 5. Skills marquee effects
+function initializeSkillsMarquee() {
+  const marqueeRows = document.querySelectorAll(".skills-marquee-row");
+
+  marqueeRows.forEach((row) => {
+    const items = row.querySelectorAll(".skill-marquee-item");
+
+    items.forEach((item) => {
+      item.addEventListener("mouseenter", () => {
+        // Pause animation and scale up
+        row.style.animationPlayState = "paused";
+        item.style.transform = "scale(1.2)";
+        item.style.filter = "brightness(1.3)";
+
+        // Show tooltip
+        const skillName = item.getAttribute("data-skill");
+        showSkillTooltip(item, skillName);
+      });
+
+      item.addEventListener("mouseleave", () => {
+        // Resume animation and scale down
+        row.style.animationPlayState = "running";
+        item.style.transform = "scale(1)";
+        item.style.filter = "brightness(1)";
+
+        // Hide tooltip
+        hideSkillTooltip();
+      });
+    });
+  });
+}
+
+// Utility functions for skill tooltip
+function showSkillTooltip(element, text) {
+  let tooltip = document.getElementById("skill-tooltip");
+  if (!tooltip) {
+    tooltip = document.createElement("div");
+    tooltip.id = "skill-tooltip";
+    tooltip.className = "skill-tooltip";
+    document.body.appendChild(tooltip);
+  }
+
+  tooltip.textContent = text;
+  tooltip.style.opacity = "1";
+
+  const rect = element.getBoundingClientRect();
+  tooltip.style.left =
+    rect.left + rect.width / 2 - tooltip.offsetWidth / 2 + "px";
+  tooltip.style.top = rect.top - tooltip.offsetHeight - 8 + "px";
+}
+
+function hideSkillTooltip() {
+  const tooltip = document.getElementById("skill-tooltip");
+  if (tooltip) {
+    tooltip.style.opacity = "0";
+  }
 }
