@@ -105,24 +105,11 @@ const skills = [
   { name: "HTML", icon: "fab fa-html5", color: "#e34c26" },
   { name: "CSS", icon: "fab fa-css3-alt", color: "#1572b6" },
   { name: "JavaScript", icon: "fab fa-js-square", color: "#f7df1e" },
-  { name: "TypeScript", icon: "fab fa-js-square", color: "#3178c6" },
-  { name: "React", icon: "fab fa-react", color: "#61dafb" },
-  { name: "Next.js", icon: "fas fa-code", color: "#000000" },
-  { name: "Node.js", icon: "fab fa-node-js", color: "#339933" },
-  { name: "Python", icon: "fab fa-python", color: "#3776ab" },
   { name: "Git", icon: "fab fa-git-alt", color: "#f05032" },
   { name: "GitHub", icon: "fab fa-github", color: "#181717" },
   { name: "VS Code", icon: "fas fa-code", color: "#007acc" },
-  { name: "Firebase", icon: "fas fa-fire", color: "#ffca28" },
-  { name: "MongoDB", icon: "fas fa-database", color: "#47a248" },
   { name: "MySQL", icon: "fas fa-database", color: "#4479a1" },
-  { name: "Docker", icon: "fab fa-docker", color: "#2496ed" },
   { name: "AWS", icon: "fab fa-aws", color: "#ff9900" },
-  { name: "Tailwind", icon: "fas fa-palette", color: "#06b6d4" },
-  { name: "Bootstrap", icon: "fab fa-bootstrap", color: "#7952b3" },
-  { name: "Sass", icon: "fab fa-sass", color: "#cc6699" },
-  { name: "Vue.js", icon: "fab fa-vuejs", color: "#4fc08d" },
-  { name: "Express", icon: "fas fa-server", color: "#000000" },
 ];
 
 // Bento grid data
@@ -177,21 +164,12 @@ const projects = [
     demo: "https://alexanderphan04.github.io",
   },
   {
-    title: "Task Management App",
+    title: "Help Desk System",
     description:
       "A collaborative task management application with real-time updates.",
-    image: "images/PhanQuan.jpg",
-    technologies: ["Vue.js", "Firebase", "Vuetify", "PWA"],
-    github: "https://github.com/AlexanderPhan04/task-manager",
-    demo: "#",
-  },
-  {
-    title: "Weather Dashboard",
-    description:
-      "A weather application with location-based forecasts and analytics.",
-    image: "images/PhanQuan.jpg",
-    technologies: ["JavaScript", "Chart.js", "OpenWeather API", "CSS"],
-    github: "https://github.com/AlexanderPhan04/weather-app",
+    image: "imagesAboutMe/HelpDeskSys.png",
+    technologies: ["PHP", "SQL"],
+    github: "https://github.com/AlexanderPhan04/HelpDeskSystem",
     demo: "#",
   },
 ];
